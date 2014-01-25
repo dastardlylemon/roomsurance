@@ -1,8 +1,8 @@
 <?php
 
-include 'coreutils.php'
+include 'coreutils.php';
 echo "test2";
-require_once ('./db_connect.php');
+//require_once ('./db_connect.php');
 
 echo "test";
 mysql_query("INSERT INTO users (name) VALUES ('Coinye')");
