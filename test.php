@@ -1,6 +1,7 @@
 <?php
 require_once ('./db_connect.php');
 $con = mysqli_connect($server, $username, $password, $db);
+echo "test";
 if (mysqli_connect_errno())
   {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
