@@ -36,12 +36,12 @@ function createGroup($userID, $groupName, $cashPerPerson)
 	$getGroupID = "SELECT groupid FROM groups WHERE group_name = " . $groupName;
 	$groupID = mysql_query($getGroupID);
 	$groupPW = generatePassword($groupID);
-	$setGroupPW = "UPDATE groups SET pass WHERE groupid = " . $groupPW;
+	$setGroupPW = "UPDATE groups SET pass = " . $groupPW . " WHERE groupid = " . $groupPW;
 	if (mysql_query($setGroupPW))
 		echo "Successfully created password";
 	else
 		echo "Could not create password";
-	$setGroupID = "UPDATE users SET usergroup WHERE userid = " . $userID;
+	$setGroupID = "UPDATE users SET usergroup = " . $groupID . " WHERE userid = " . $userID;
 	if (mysql_query($setGroupID))
 		echo "Successfully joined group" . $groupName;
 	else
@@ -50,7 +50,7 @@ function createGroup($userID, $groupName, $cashPerPerson)
 
 function joinGroup($userID, $groupPW)
 {
-	//TODO
+	$findGroup = "SELECT groupid FROM groups WHERE groupPW = " . $groupPW;
 }
 
 
