@@ -17,7 +17,8 @@ function sendEntryMail($emailString, $groupID)	//sends an entry email to everyon
 	$emails = array();
 	explodeString($emailString, $emails); //emails now contains an array of tbe emails to be sent out.
 
-	$groupPW = generatePassword($groupID);
+	$getGroupPW = "SELECT pass FROM groups WHERE groupid = " . $groupID;
+	$groupPW = mysql_query($getGroupPW);
 
 	for ($i = 0; $i < count($emails); $i++)
 	{
@@ -34,11 +35,22 @@ function createGroup($userID, $groupName, $cashPerPerson)
 		echo "Group could not be created because " . mysql_error($db);
 	$getGroupID = "SELECT groupid FROM groups WHERE group_name = " . $groupName;
 	$groupID = mysql_query($getGroupID);
+	$groupPW = generatePassword($groupID);
+	$setGroupPW = "UPDATE groups SET pass WHERE groupid = " . $groupPW;
+	if (mysql_query($setGroupPW))
+		echo "Successfully created password";
+	else
+		echo "Could not create password";
 	$setGroupID = "UPDATE users SET usergroup WHERE userid = " . $userID;
 	if (mysql_query($setGroupID))
 		echo "Successfully joined group" . $groupName;
 	else
 		echo "Error joining the group: " . mysql_error($db);
+}
+
+function joinGroup($userID, $groupPW)
+{
+	//TODO
 }
 
 
