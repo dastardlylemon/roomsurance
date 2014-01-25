@@ -1,5 +1,6 @@
 <?php
 
+echo 'test3';
 include 'coreutils.php';
 echo "test2";
 //require_once ('./db_connect.php');
