@@ -127,6 +127,7 @@ function generatePassword($groupID)
 		$findGroup = "SELECT groupid FROM groups WHERE pass = '" . $password . "'";
 		$result = mysql_query($findGroup);
 			if(mysql_num_rows($result) == 0) {
+					echo $password;
 					return $password;
 				}
 			else if($result == $groupID)
