@@ -28,25 +28,25 @@ function sendEntryMail($emailString, $groupID)	//sends an entry email to everyon
 
 function createGroup($userID, $groupName, $cashPerPerson)
 {
-	$newGroup = "INSERT INTO groups (group_name, cash_per) VALUES (" . $groupName . ", " . $cashPerPerson . ")";
+	$newGroup = "INSERT INTO groups (group_name, cash_per) VALUES ('" . $groupName . "', " . $cashPerPerson . ")";
 	if (mysql_query($newGroup))
 		echo "Successfully created group" . $groupName;
 	else
 		echo "Group could not be created because " . mysql_error($db);
-	$getGroupID = "SELECT groupid FROM groups WHERE group_name = " . $groupName;
+	$getGroupID = "SELECT groupid FROM groups WHERE group_name = '" . $groupName . "'";
 	$groupID = mysql_query($getGroupID);
 	$groupPW = generatePassword($groupID);
-	$setGroupPW = "UPDATE groups SET pass = " . $groupPW . " WHERE groupid = " . $groupPW;
+	$setGroupPW = "UPDATE groups SET pass = '" . $groupPW . "' WHERE groupid = " . $groupID;
 	if (mysql_query($setGroupPW))
 		echo "Successfully created password";
 	else
 		echo "Could not create password";
-	$setGroupID = "UPDATE users SET usergroup = " . $groupID . " WHERE userid = " . $userID;
+	$setGroupID = "UPDATE users SET usergroup = " . $groupID . " WHERE userid = '" . $userID ."'";
 	if (mysql_query($setGroupID))
 		echo "Successfully joined group" . $groupName;
 	else
 		echo "Error joining the group: " . mysql_error($db);
-	$putCash = "UPDATE users SET cash = " . $cashPerPerson . " AND points = 1000 WHERE userid = " . $userID;
+	$putCash = "UPDATE users SET cash = " . $cashPerPerson . " AND points = 1000 WHERE userid = '" . $userID . "'";
 	if (mysql_query($putCash))
 		echo "You now have $" . $getCashVal;
 	else
@@ -55,17 +55,17 @@ function createGroup($userID, $groupName, $cashPerPerson)
 
 function joinGroup($userID, $groupPW)
 {
-	$findGroup = "SELECT groupid FROM groups WHERE pass = " . $groupPW;
+	$findGroup = "SELECT groupid FROM groups WHERE pass = '" . $groupPW . "'";
 	$getGroupID = mysql_query($findGroup);
 	if (!$getgroup) echo "Could not find group with pass";
-	$findUser = "UPDATE users SET usergroup = " . $getGroupID . " WHERE userid = " . $userID;
+	$findUser = "UPDATE users SET usergroup = " . $getGroupID . " WHERE userid = '" . $userID . "'";
 	if (mysql_query($findUser))
 		echo "Successfully joined group"
 	else
 		echo "Error joining the group: " . mysql_error($db);
 	$getCash = "SELECT cash_per FROM groups WHERE groupid = " . $getGroupID;
 	$getCashVal = mysql_query($getCash);
-	$putCash = "UPDATE users SET cash = " . $getCashVal . " AND points = 1000 WHERE userid = " . $userID;
+	$putCash = "UPDATE users SET cash = " . $getCashVal . " AND points = 1000 WHERE userid = '" . $userID . "'";
 	if (mysql_query($putCash))
 		echo "You now have $" . $getCashVal;
 	else
