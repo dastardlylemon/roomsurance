@@ -10,6 +10,4 @@ VALUES (13, 'Kantai Collection', 1000, 40000, 'kancolle')"));
 var_dump(mysql_query("INSERT INTO users
 VALUES ('1000', 'Yuudachi', 13, 20, 100.50)"));
 
-mysql_close($con);
-
 ?>

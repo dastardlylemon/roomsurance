@@ -44,10 +44,11 @@ function calculateEndValue($totalPoints, $userPoints, $totalGroupCash)
 function calculateTotalPoints($groupID)
 {
 	$sqlCall = "SELECT ALL * FROM users WHERE groupid = " . $groupID;
-	$result = mysqli_query($con, $sqlCall);
+	$result = mysql_query($sqlCall);
 	$points = 0;
-	while ($row = mysqli_fetch_array($result))
+	while ($row = mysql_fetch_array($result, MYSQL_ASSOC))
 		$points = $points + $row['points'];
+	return $points;
 }
 
 
