@@ -37,10 +37,12 @@ function createGroup($userID, $groupName, $cashPerPerson, $listEmails)
 		echo "Group could not be created because " . mysql_error($db);
 	$getGroupID = "SELECT groupid FROM groups WHERE group_name = '" . $groupName . "'";
 	$groupID = mysql_query($getGroupID);
+
+	echo $groupID;
 	$groupPW = generatePassword();
 
 	echo $groupPW;
-	$setGroupPW = "UPDATE groups SET pass = '" . $groupPW . "' WHERE groupid = " . $groupID;
+	$setGroupPW = "UPDATE groups SET pass = '$groupPW' WHERE groupid = $groupID";
 	if (mysql_query($setGroupPW))
 		echo "Successfully created password";
 	else
