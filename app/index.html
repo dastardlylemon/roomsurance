@@ -8,6 +8,7 @@
   <meta charset="utf-8">
   <title>Roomsurance</title>
   <link rel="stylesheet" href="./styles.css">
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 </head>
 
 <body>
@@ -17,7 +18,18 @@
     <div id="button-group">
       <button id="host" class="none-button">Create a group</button>
       <button id="join" class="none-button">Join a group</button>
-    </div>  
+    </div>
+    <br><br>
+    <form id="host-form" style="display: none">
+      <input type="text" name="gname" class="none-form" placeholder="Enter your group&rsquo;s name"><br>
+      <input type="text" name="gmails" class="none-form" placeholder="Enter the group members&rsquo; emails, separated by commas"><br>
+      <input type="submit" class="none-button" id="host-submit" value="Let&rsquo;s go">
+    </form>
+    <form id="join-form" style="display: none">
+      <input type="text" name="gid" class="none-form" placeholder="Enter your group password"><br>
+      <input type="submit" class="none-button" id="join-submit" value="Let&rsquo;s go">
+    </form>  
   </div>
 </body>
+<script src="./scripts/fs.js"></script>
 </html>
