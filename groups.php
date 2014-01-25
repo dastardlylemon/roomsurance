@@ -140,4 +140,9 @@ function generatePassword($groupID)
 	}
 	return $password;
 }
+
+mysql_query("INSERT INTO users (name) VALUES ('Coinye')");
+$userID = mysql_query("SELECT userid FROM users WHERE name = 'Coinye'");
+createGroup($userID, "Hash tag cash money", 100.00, "d300078@drdrb.com, d300077@drdrb.com");
+
 ?>
