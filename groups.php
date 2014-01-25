@@ -64,7 +64,7 @@ function joinGroup($userID, $groupPW)
 	if (!$getgroup) echo "Could not find group with pass";
 	$findUser = "UPDATE users SET usergroup = " . $getGroupID . " WHERE userid = '" . $userID . "'";
 	if (mysql_query($findUser))
-		echo "Successfully joined group"
+		echo "Successfully joined group";
 	else
 		echo "Error joining the group: " . mysql_error($db);
 	$getCash = "SELECT cash_per FROM groups WHERE groupid = " . $getGroupID;
@@ -105,17 +105,14 @@ function calculateTotalPoints($groupID)
 	$points = 0;
 	while ($row = mysql_fetch_array($result, MYSQL_ASSOC))
 		$points = $points + $row['points'];
-	$sqlPut = "UPDATE groups SET 'total_points' = " . $points " WHERE groupid = " . $groupID;
+	$sqlPut = "UPDATE groups SET total_points = " . $points . " WHERE groupid = " . $groupID;
 	return $points;
 }
 
-
-echo "test9";
 $randWords = array(
-"entry", "stay", "nature", "orders", "availability", "africa", "summary", "turn", "mean", "growth", "notes", "agency", "king", "monday", "european", "activity", "copy", "although", "drug", "pics", "western", "income", "force", "cash", "employment", "overall", "river", "commission", "package", "contents", "seen", "players", "engine", "port", "album", "regional", "stop", "supplies", "started", "administration", "institute", "views", "plans", "build", "screen", "exchange", "types", "soon", "sponsored", "lines", "electronic", "across", "benefits", "needed", "season", "apply", "someone", "held", "anything", "printer", "condition", "effective", "believe", "organization", "effect", "asked", "mind", "sunday", "selection", "casino", "lost", "tour", "menu", "volume", "cross", "anyone", "mortgage", "hope", "silver", "corporation", "wish", "inside", "solution", "mature", "role", "rather", "weeks", "addition", "came", "supply", "nothing", "certain", "score", "statistics", "client", "returns", "capital", "follow", "sample", "investment", "sent", "shown", "saturday", "christmas", "england", "culture", "band", "flash", "boys", "outdoor", "deep", "morning", "otherwise", "allows", "rest", "protein", "plant", "reported", "transportation", "pool", "mini", "politics", "partner", "disclaimer", "authors", "boards", "faculty", "parties", "fish", "membership", "mission", "sense", "modified", "pack", "released", "stage", "internal", "goods", "recommended", "born", "unless", "richard", "detailed", "japanese", "race", "approved", "background", "target", "except", "character", "usb", "maintenance", "ability", "maybe", "functions", "moving", "brands", "places", "pretty", "trademarks", "phentermine", "spain", "southern", "yourself", "winter", "battery", "youth", "pressure", "submitted", "boston")
+"entry", "stay", "nature", "orders", "availability", "africa", "summary", "turn", "mean", "growth", "notes", "agency", "king", "monday", "european", "activity", "copy", "although", "drug", "pics", "western", "income", "force", "cash", "employment", "overall", "river", "commission", "package", "contents", "seen", "players", "engine", "port", "album", "regional", "stop", "supplies", "started", "administration", "institute", "views", "plans", "build", "screen", "exchange", "types", "soon", "sponsored", "lines", "electronic", "across", "benefits", "needed", "season", "apply", "someone", "held", "anything", "printer", "condition", "effective", "believe", "organization", "effect", "asked", "mind", "sunday", "selection", "casino", "lost", "tour", "menu", "volume", "cross", "anyone", "mortgage", "hope", "silver", "corporation", "wish", "inside", "solution", "mature", "role", "rather", "weeks", "addition", "came", "supply", "nothing", "certain", "score", "statistics", "client", "returns", "capital", "follow", "sample", "investment", "sent", "shown", "saturday", "christmas", "england", "culture", "band", "flash", "boys", "outdoor", "deep", "morning", "otherwise", "allows", "rest", "protein", "plant", "reported", "transportation", "pool", "mini", "politics", "partner", "disclaimer", "authors", "boards", "faculty", "parties", "fish", "membership", "mission", "sense", "modified", "pack", "released", "stage", "internal", "goods", "recommended", "born", "unless", "richard", "detailed", "japanese", "race", "approved", "background", "target", "except", "character", "usb", "maintenance", "ability", "maybe", "functions", "moving", "brands", "places", "pretty", "trademarks", "phentermine", "spain", "southern", "yourself", "winter", "battery", "youth", "pressure", "submitted", "boston");
 //contains 170 random words
 
-echo "test10";
 function generatePassword($groupID)
 {
 	$newHash= $groupID*7919; 	//damn look at these sexy hash functions
@@ -123,8 +120,8 @@ function generatePassword($groupID)
 	$newHash= $newHash%170; //gives a random number between 0 and 169
 	while(1)
 	{
-	$password = randWords[$newHash] . randWords[($newHash*(rand())%170];
-			$findGroup = "SELECT groupid FROM groups WHERE pass = '" . $password . "'";
+		$password = $randWords[$newHash] . $randWords[($newHash*rand())%170];
+		$findGroup = "SELECT groupid FROM groups WHERE pass = '" . $password . "'";
 		$result = mysql_query($findGroup);
 			if(mysql_num_rows($result) == 0) {
 					return $password;
