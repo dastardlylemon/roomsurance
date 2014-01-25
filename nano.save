@@ -1,0 +1,5 @@
+=== roomsurance Config Vars BUILDPACK_URL: 
+https://github.com/heroku/heroku-buildpack-php CLEARDB_DATABASE_URL: 
+mysql://bd925a77ad68a1:88d26dab@us-cdbr-east-04.cleardb.com/heroku_b2b5817a2ac0cf5?reconnect=true 
+DATABASE_URL: 
+mysql://bd925a77ad68a1:88d26dab@us-cdbr-east-04.cleardb.com/heroku_b2b5817a2ac0cf5?reconnect=true
