@@ -46,11 +46,31 @@ function createGroup($userID, $groupName, $cashPerPerson)
 		echo "Successfully joined group" . $groupName;
 	else
 		echo "Error joining the group: " . mysql_error($db);
+	$putCash = "UPDATE users SET cash = " . $cashPerPerson . " AND points = 1000 WHERE userid = " . $userID;
+	if (mysql_query($putCash))
+		echo "You now have $" . $getCashVal;
+	else
+		echo "Could not add cash";
 }
 
 function joinGroup($userID, $groupPW)
 {
-	$findGroup = "SELECT groupid FROM groups WHERE groupPW = " . $groupPW;
+	$findGroup = "SELECT groupid FROM groups WHERE pass = " . $groupPW;
+	$getGroupID = mysql_query($findGroup);
+	if (!$getgroup) echo "Could not find group with pass";
+	$findUser = "UPDATE users SET usergroup = " . $getGroupID . " WHERE userid = " . $userID;
+	if (mysql_query($findUser))
+		echo "Successfully joined group"
+	else
+		echo "Error joining the group: " . mysql_error($db);
+	$getCash = "SELECT cash_per FROM groups WHERE groupid = " . $getGroupID;
+	$getCashVal = mysql_query($getCash);
+	$putCash = "UPDATE users SET cash = " . $getCashVal . " AND points = 1000 WHERE userid = " . $userID;
+	if (mysql_query($putCash))
+		echo "You now have $" . $getCashVal;
+	else
+		echo "Could not add cash";
+	calculateTotalPoints($getGroupID);
 }
 
 
