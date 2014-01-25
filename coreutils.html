@@ -18,16 +18,27 @@ function sendEntryMail($emailString, $groupID)	//sends an entry email to everyon
 	explodeString($emailString, $emails); //emails now contains an array of tbe emails to be sent out.
 
 	$groupPW = generatePassword($groupID);
+
 	for ($i = 0; $i < count($emails); $i++)
 	{
 		mail($emails[$i], "You've been invited to Roomsurance!", "Hello! \n You've been invited to Roomsurance!  This means one of your roommates has invited you to this chore management service.  Your password is: \n \n " . $groupPW . " \n \n Visit our website, and when prompted, please input the password above. If you believe you've received this email in error, kindly ignore this message.  \n Thanks, \n Roomsurance Staff ", "From: webmaster@Roomsurance.com")
 	} //should work, theoretically.
 }
 
-function createGroup($userID, $groupName)
-
-{	//.......TODO
-
+function createGroup($userID, $groupName, $cashPerPerson)
+{
+	$newGroup = "INSERT INTO groups (group_name, cash_per) VALUES (" . $groupName . ", " . $cashPerPerson . ")";
+	if (mysql_query($newGroup))
+		echo "Successfully created group" . $groupName;
+	else
+		echo "Group could not be created because " . mysql_error($db);
+	$getGroupID = "SELECT groupid FROM groups WHERE group_name = " . $groupName;
+	$groupID = mysql_query($getGroupID);
+	$setGroupID = "UPDATE users SET usergroup WHERE userid = " . $userID;
+	if (mysql_query($setGroupID))
+		echo "Successfully joined group" . $groupName;
+	else
+		echo "Error joining the group: " . mysql_error($db);
 }
 
 
