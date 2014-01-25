@@ -1,0 +1,80 @@
+@import url(http://fonts.googleapis.com/css?family=Montserrat);
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  font: "Montserrat", Helvetica, sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  color: #fff; }
+
+body {
+  background-color: #6c8ad7; }
+
+#content {
+  width: 960px;
+  padding: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
+  #content #button-group {
+    width: 600px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto; }
+    #content #button-group #join {
+      float: right; }
+
+.none-button {
+  padding: 20px;
+  background-color: #6c8ad7;
+  font: "Montserrat", Helvetica, sans-serif;
+  font-size: 20px;
+  cursor: pointer;
+  width: 250px;
+  text-transform: uppercase;
+  text-align: center;
+  color: #fff;
+  -webkit-box-shadow: 0px 10px 0px #576fac;
+  -moz-box-shadow: 0px 10px 0px #576fac;
+  box-shadow: 0px 10px 0px #576fac;
+  border: 1px solid #576fac; }
+  .none-button:hover {
+    background-color: #7697ed; }
+  .none-button:active {
+    position: relative;
+    top: 5px;
+    -webkit-box-shadow: 0px 5px 0px #576fac;
+    -moz-box-shadow: 0px 5px 0px #576fac;
+    box-shadow: 0px 5px 0px #576fac; }
