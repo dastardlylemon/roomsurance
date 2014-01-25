@@ -1,4 +1,5 @@
 <?php
+echo "test2";
 require_once ('./db_connect.php');
 $con = mysqli_connect($server, $username, $password, $db);
 echo "test";
