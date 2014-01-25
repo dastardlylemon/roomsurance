@@ -37,7 +37,7 @@ function createGroup($userID, $groupName, $cashPerPerson, $listEmails)
 		echo "Group could not be created because " . mysql_error($db);
 	$getGroupID = "SELECT groupid FROM groups WHERE group_name = '" . $groupName . "'";
 	$groupID = mysql_query($getGroupID);
-	$groupPW = generatePassword($groupID);
+	$groupPW = generatePassword();
 	$setGroupPW = "UPDATE groups SET pass = '" . $groupPW . "' WHERE groupid = " . $groupID;
 	if (mysql_query($setGroupPW))
 		echo "Successfully created password";
@@ -113,15 +113,12 @@ $randWords = array(
 "entry", "stay", "nature", "orders", "availability", "africa", "summary", "turn", "mean", "growth", "notes", "agency", "king", "monday", "european", "activity", "copy", "although", "drug", "pics", "western", "income", "force", "cash", "employment", "overall", "river", "commission", "package", "contents", "seen", "players", "engine", "port", "album", "regional", "stop", "supplies", "started", "administration", "institute", "views", "plans", "build", "screen", "exchange", "types", "soon", "sponsored", "lines", "electronic", "across", "benefits", "needed", "season", "apply", "someone", "held", "anything", "printer", "condition", "effective", "believe", "organization", "effect", "asked", "mind", "sunday", "selection", "casino", "lost", "tour", "menu", "volume", "cross", "anyone", "mortgage", "hope", "silver", "corporation", "wish", "inside", "solution", "mature", "role", "rather", "weeks", "addition", "came", "supply", "nothing", "certain", "score", "statistics", "client", "returns", "capital", "follow", "sample", "investment", "sent", "shown", "saturday", "christmas", "england", "culture", "band", "flash", "boys", "outdoor", "deep", "morning", "otherwise", "allows", "rest", "protein", "plant", "reported", "transportation", "pool", "mini", "politics", "partner", "disclaimer", "authors", "boards", "faculty", "parties", "fish", "membership", "mission", "sense", "modified", "pack", "released", "stage", "internal", "goods", "recommended", "born", "unless", "richard", "detailed", "japanese", "race", "approved", "background", "target", "except", "character", "usb", "maintenance", "ability", "maybe", "functions", "moving", "brands", "places", "pretty", "trademarks", "phentermine", "spain", "southern", "yourself", "winter", "battery", "youth", "pressure", "submitted", "boston");
 //contains 170 random words
 
-function generatePassword($groupID)
+function generatePassword()
 {
-	$newHash= $groupID*7919; 	//damn look at these sexy hash functions
-	$newHash= $newHash%2791;
-	$newHash= $newHash%170; //gives a random number between 0 and 169
 	for ($i = 0; $i < 170; i++)
 	{
 		echo "tester".$i;
-		$password = $randWords[$newHash] . $randWords[($newHash*rand())%170];
+		$password = $randWords[(rand()) % 170] . $randWords[(rand()) % 170];
 		$findGroup = "SELECT groupid FROM groups WHERE pass = '" . $password . "'";
 		$result = mysql_query($findGroup);
 			if(mysql_num_rows($result) == 0) {
@@ -133,10 +130,10 @@ function generatePassword($groupID)
 				}
 			else
 			{
-				$newHash++;
+				continue;
 			}
 	}
-	return $password;
+	echo "we ducked up the password. sorry.";
 }
 
 ?>
