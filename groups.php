@@ -1,8 +1,8 @@
 <?php
-echo "test4";
+echo "test4\n";
 require_once ('./db_connect.php');
 
-echo "test5";
+echo "test5\n";
 function explodeString($rawGroupString, &$groups) {
 	$groups = explode(",", $rawGroupString);
 }
@@ -27,7 +27,7 @@ function sendEntryMail($emailString, $groupID)	//sends an entry email to everyon
 	} //should work, theoretically.
 }
 
-echo "test6";
+echo "test6\n";
 function createGroup($userID, $groupName, $cashPerPerson, $listEmails)
 {
 	$newGroup = "INSERT INTO groups (group_name, cash_per) VALUES ('" . $groupName . "', " . $cashPerPerson . ")";
@@ -37,7 +37,9 @@ function createGroup($userID, $groupName, $cashPerPerson, $listEmails)
 		echo "Group could not be created because " . mysql_error($db);
 	$getGroupID = "SELECT groupid FROM groups WHERE group_name = '" . $groupName . "'";
 	$groupID = mysql_query($getGroupID);
+	echo $groupID . "\n";
 	$groupPW = generatePassword($groupID);
+	echo $groupPW . "\n";
 	$setGroupPW = "UPDATE groups SET pass = '" . $groupPW . "' WHERE groupid = " . $groupID;
 	if (mysql_query($setGroupPW))
 		echo "Successfully created password";
@@ -56,7 +58,7 @@ function createGroup($userID, $groupName, $cashPerPerson, $listEmails)
 	sendEntryMail($listEmails, $groupID);
 }
 
-echo "test7";
+echo "test7\n";
 function joinGroup($userID, $groupPW)
 {
 	$findGroup = "SELECT groupid FROM groups WHERE pass = '" . $groupPW . "'";
@@ -82,7 +84,7 @@ function removeGroup($groupName)
 	//TODO
 }
 
-echo "test8";
+echo "test8\n";
 //difficultyVal should be between 0 and 10; $timeVal should be time taken in minutes
 function suggestedPrice($difficultyVal, $timeVal, $initialPoints)
 {

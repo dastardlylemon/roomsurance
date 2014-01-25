@@ -1,8 +1,8 @@
 <?php
 
-echo 'test3';
+echo "test3\n";
 include 'groups.php';
-echo "test2";
+echo "test2\n";
 //require_once ('./db_connect.php');
 
 echo "test";
