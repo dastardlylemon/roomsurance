@@ -1,6 +1,7 @@
 <?php
 echo "test2";
 require_once ('./db_connect.php');
+var_dump ($con);
 
 echo "test";
 
