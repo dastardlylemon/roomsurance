@@ -23,7 +23,7 @@ function sendEntryMail($emailString, $groupID)	//sends an entry email to everyon
 
 	for ($i = 0; $i < count($emails); $i++)
 	{
-		mail($emails[$i], "You've been invited to Roomsurance!", "Hello! \n You've been invited to Roomsurance!  This means one of your roommates has invited you to this chore management service.  Your password is: \n \n " . $groupPW . " \n \n Visit our website, and when prompted, please input the password above. If you believe you've received this email in error, kindly ignore this message.  \n Thanks, \n Roomsurance Staff ", "From: webmaster@Roomsurance.com")
+		mail($emails[$i], "You've been invited to Roomsurance!", "Hello! \n You've been invited to Roomsurance!  This means one of your roommates has invited you to this chore management service.  Your password is: \n \n " . $groupPW . " \n \n Visit our website, and when prompted, please input the password above. If you believe you've received this email in error, kindly ignore this message.  \n Thanks, \n Roomsurance Staff ", "From: webmaster@Roomsurance.com");
 	} //should work, theoretically.
 }
 
@@ -140,9 +140,5 @@ function generatePassword($groupID)
 	}
 	return $password;
 }
-
-mysql_query("INSERT INTO users (name) VALUES ('Coinye')");
-$userID = mysql_query("SELECT userid FROM users WHERE name = 'Coinye'");
-createGroup($userID, "Hash tag cash money", 100.00, "d300078@drdrb.com, d300077@drdrb.com");
 
 ?>
