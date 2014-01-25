@@ -115,7 +115,7 @@ $randWords = array(
 
 function generatePassword()
 {
-	for ($i = 0; $i < 170; i++)
+	for ($i = 0; $i < 170; $i++)
 	{
 		echo "tester".$i;
 		$password = $randWords[(rand()) % 170] . $randWords[(rand()) % 170];
