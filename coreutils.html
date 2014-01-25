@@ -3,7 +3,7 @@ require_once ('./db_connect.php');
 
 
 function explodeString($rawGroupString, &$groups) {
-$groups = explode(",", $rawGroupString);
+	$groups = explode(",", $rawGroupString);
 }
 
 function removeSpaces($rawString)
@@ -48,6 +48,7 @@ function calculateTotalPoints($groupID)
 	$points = 0;
 	while ($row = mysql_fetch_array($result, MYSQL_ASSOC))
 		$points = $points + $row['points'];
+	$sqlPut = "UPDATE groups SET 'total_points' = " . $points " WHERE groupid = " . $groupID;
 	return $points;
 }
 
