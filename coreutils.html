@@ -26,7 +26,7 @@ function sendEntryMail($emailString, $groupID)	//sends an entry email to everyon
 	} //should work, theoretically.
 }
 
-function createGroup($userID, $groupName, $cashPerPerson)
+function createGroup($userID, $groupName, $cashPerPerson, $listEmails)
 {
 	$newGroup = "INSERT INTO groups (group_name, cash_per) VALUES ('" . $groupName . "', " . $cashPerPerson . ")";
 	if (mysql_query($newGroup))
@@ -51,6 +51,7 @@ function createGroup($userID, $groupName, $cashPerPerson)
 		echo "You now have $" . $getCashVal;
 	else
 		echo "Could not add cash";
+	sendEntryMail($listEmails, $groupID);
 }
 
 function joinGroup($userID, $groupPW)
@@ -71,6 +72,11 @@ function joinGroup($userID, $groupPW)
 	else
 		echo "Could not add cash";
 	calculateTotalPoints($getGroupID);
+}
+
+function removeGroup($groupName)
+{
+
 }
 
 
