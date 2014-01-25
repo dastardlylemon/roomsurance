@@ -114,7 +114,7 @@ function generatePassword($groupID)
 	while(1)
 	{
 	$password = randWords[$newHash] . randWords[($newHash*(rand())%170];
-			$findGroup = "SELECT groupid FROM groups WHERE groupPW = " . $password;
+			$findGroup = "SELECT groupid FROM groups WHERE pass = '" . $password . "'";
 		$result = mysql_query($findGroup);
 			if(mysql_num_rows($result) == 0) {
 					return $password;
