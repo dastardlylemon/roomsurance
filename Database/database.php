@@ -1,6 +1,6 @@
 <?php
 
-include_once("../db_connect.php");
+require_once("../db_connect.php");
 // Connection to db
 $con = mysqli_connect($server, $username, $password, $db);
 if (mysqli_connect_errno())
