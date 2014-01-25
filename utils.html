@@ -1,0 +1,40 @@
+<?php
+
+//difficultyVal should be between 0 and 10; $timeVal should be time taken in minutes
+function suggestedPrice($difficultyVal, $timeVal, $initialPoints)
+{
+	$modifier = $difficultyVal*$timeVal;
+	$modifier = $modifier/600;				//Makes it sufficiently small (10*60) so that it will be a smaller portion of the initialpoints
+	$sugPrice = ceil($modifier*$initialPoints/10);	//initial poitns should be somewhere ~1000, makes sugPrice ~20 for mediocre jobs
+	return $sugPrice;
+}
+
+function calculateEndValue($totalPoints, $userPoints, $totalGroupCash)
+{
+	$ratio = $userPoints/$totalPoints;
+	return $totalCash*$ratio;
+}
+
+function calculateTotalPoints($groupID)
+{
+	$sqlCall = "SELECT ALL FROM users WHERE groupid = " . $groupID;
+	//TODO
+
+}
+
+
+
+$randWords = array(
+"entry", "stay", "nature", "orders", "availability", "africa", "summary", "turn", "mean", "growth", "notes", "agency", "king", "monday", "european", "activity", "copy", "although", "drug", "pics", "western", "income", "force", "cash", "employment", "overall", "river", "commission", "package", "contents", "seen", "players", "engine", "port", "album", "regional", "stop", "supplies", "started", "administration", "institute", "views", "plans", "build", "screen", "exchange", "types", "soon", "sponsored", "lines", "electronic", "across", "benefits", "needed", "season", "apply", "someone", "held", "anything", "printer", "condition", "effective", "believe", "organization", "effect", "asked", "mind", "sunday", "selection", "casino", "lost", "tour", "menu", "volume", "cross", "anyone", "mortgage", "hope", "silver", "corporation", "wish", "inside", "solution", "mature", "role", "rather", "weeks", "addition", "came", "supply", "nothing", "certain", "score", "statistics", "client", "returns", "capital", "follow", "sample", "investment", "sent", "shown", "saturday", "christmas", "england", "culture", "band", "flash", "boys", "outdoor", "deep", "morning", "otherwise", "allows", "rest", "protein", "plant", "reported", "transportation", "pool", "mini", "politics", "partner", "disclaimer", "authors", "boards", "faculty", "parties", "fish", "membership", "mission", "sense", "modified", "pack", "released", "stage", "internal", "goods", "recommended", "born", "unless", "richard", "detailed", "japanese", "race", "approved", "background", "target", "except", "character", "usb", "maintenance", "ability", "maybe", "functions", "moving", "brands", "places", "pretty", "trademarks", "phentermine", "spain", "southern", "yourself", "winter", "battery", "youth", "pressure", "submitted", "boston")
+//contains 170 random words
+
+function generatePassword($groupID)
+{
+	$newHash= $groupID*7919;
+	$newHash= $newHash%2791;
+	$newHash= $newHash%170; //gives a random number between 0 and 169
+	$password = randWords[$newHash];
+
+	return $password;
+}
+?>
