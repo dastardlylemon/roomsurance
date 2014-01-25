@@ -91,8 +91,23 @@ function generatePassword($groupID)
 	$newHash= $groupID*7919; 	//damn look at these sexy hash functions
 	$newHash= $newHash%2791;
 	$newHash= $newHash%170; //gives a random number between 0 and 169
-	$password = randWords[$newHash] . randWords[($newHash+85)%170];
-
+	while(1)
+	{
+	$password = randWords[$newHash] . randWords[($newHash*(859+$groupID)%170];
+			$findGroup = "SELECT groupid FROM groups WHERE groupPW = " . $password;
+		$result = mysql_query($findGroup);
+			if(mysql_num_rows($result) == 0) {
+					return $password;
+				}
+			else if($result == $groupID)
+				{
+				return $password;
+				}
+			else
+			{
+				$newHash++;
+			}
+	}
 	return $password;
 }
 ?>
