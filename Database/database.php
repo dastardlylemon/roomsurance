@@ -33,6 +33,7 @@ $groups = "CREATE TABLE groups (
 groupid INT NOT NULL AUTO_INCREMENT,
 group_name varchar(30) NOT NULL,
 total_points INT,
+total_cash INT,
 pass varchar(30) NOT NULL,
 PRIMARY KEY (groupid),
 UNIQUE (groupid),
@@ -64,4 +65,6 @@ if (mysqli_query($con, $chores))
 	echo "Table chores created successfully";
 else
 	echo "Error creating table: " , mysqli_error($con);
+
+mysqli_close($con);
 ?>

@@ -1,5 +1,6 @@
 <?php
 require_once ('./db_connect.php');
+$con = mysqli_connect($server, $username, $password, $db);
 
 //difficultyVal should be between 0 and 10; $timeVal should be time taken in minutes
 function suggestedPrice($difficultyVal, $timeVal, $initialPoints)
@@ -18,9 +19,11 @@ function calculateEndValue($totalPoints, $userPoints, $totalGroupCash)
 
 function calculateTotalPoints($groupID)
 {
-	$sqlCall = "SELECT ALL FROM users WHERE groupid = " . $groupID;
-	//TODO
-
+	$sqlCall = "SELECT ALL * FROM users WHERE groupid = " . $groupID;
+	$result = mysqli_query($con, $sqlCall);
+	$points = 0;
+	while ($row = mysqli_fetch_array($result))
+		$points = $points + $row['points'];
 }
 
 
