@@ -1,7 +1,8 @@
 <?php
+echo "test4";
 require_once ('./db_connect.php');
 
-
+echo "test5";
 function explodeString($rawGroupString, &$groups) {
 	$groups = explode(",", $rawGroupString);
 }
@@ -26,6 +27,7 @@ function sendEntryMail($emailString, $groupID)	//sends an entry email to everyon
 	} //should work, theoretically.
 }
 
+echo "test6";
 function createGroup($userID, $groupName, $cashPerPerson, $listEmails)
 {
 	$newGroup = "INSERT INTO groups (group_name, cash_per) VALUES ('" . $groupName . "', " . $cashPerPerson . ")";
@@ -54,6 +56,7 @@ function createGroup($userID, $groupName, $cashPerPerson, $listEmails)
 	sendEntryMail($listEmails, $groupID);
 }
 
+echo "test7";
 function joinGroup($userID, $groupPW)
 {
 	$findGroup = "SELECT groupid FROM groups WHERE pass = '" . $groupPW . "'";
@@ -76,10 +79,10 @@ function joinGroup($userID, $groupPW)
 
 function removeGroup($groupName)
 {
-
+	//TODO
 }
 
-
+echo "test8";
 //difficultyVal should be between 0 and 10; $timeVal should be time taken in minutes
 function suggestedPrice($difficultyVal, $timeVal, $initialPoints)
 {
@@ -107,11 +110,12 @@ function calculateTotalPoints($groupID)
 }
 
 
-
+echo "test9";
 $randWords = array(
 "entry", "stay", "nature", "orders", "availability", "africa", "summary", "turn", "mean", "growth", "notes", "agency", "king", "monday", "european", "activity", "copy", "although", "drug", "pics", "western", "income", "force", "cash", "employment", "overall", "river", "commission", "package", "contents", "seen", "players", "engine", "port", "album", "regional", "stop", "supplies", "started", "administration", "institute", "views", "plans", "build", "screen", "exchange", "types", "soon", "sponsored", "lines", "electronic", "across", "benefits", "needed", "season", "apply", "someone", "held", "anything", "printer", "condition", "effective", "believe", "organization", "effect", "asked", "mind", "sunday", "selection", "casino", "lost", "tour", "menu", "volume", "cross", "anyone", "mortgage", "hope", "silver", "corporation", "wish", "inside", "solution", "mature", "role", "rather", "weeks", "addition", "came", "supply", "nothing", "certain", "score", "statistics", "client", "returns", "capital", "follow", "sample", "investment", "sent", "shown", "saturday", "christmas", "england", "culture", "band", "flash", "boys", "outdoor", "deep", "morning", "otherwise", "allows", "rest", "protein", "plant", "reported", "transportation", "pool", "mini", "politics", "partner", "disclaimer", "authors", "boards", "faculty", "parties", "fish", "membership", "mission", "sense", "modified", "pack", "released", "stage", "internal", "goods", "recommended", "born", "unless", "richard", "detailed", "japanese", "race", "approved", "background", "target", "except", "character", "usb", "maintenance", "ability", "maybe", "functions", "moving", "brands", "places", "pretty", "trademarks", "phentermine", "spain", "southern", "yourself", "winter", "battery", "youth", "pressure", "submitted", "boston")
 //contains 170 random words
 
+echo "test10";
 function generatePassword($groupID)
 {
 	$newHash= $groupID*7919; 	//damn look at these sexy hash functions

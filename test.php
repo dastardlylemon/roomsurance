@@ -1,15 +1,24 @@
 <?php
+
+echo 'test3';
+include 'groups.php';
 echo "test2";
-require_once ('./db_connect.php');
+//require_once ('./db_connect.php');
 
 echo "test";
+mysql_query("INSERT INTO users (name) VALUES ('Coinye')");
+$userID = mysql_query("SELECT userid FROM users WHERE name = 'Coinye'");
 
-var_dump(mysql_query("INSERT INTO groups
-VALUES (13, 'Kantai Collection', 1000, 40000, 'kancolle')"));
+//mysql_query("INSERT INTO users (name) VALUES ('Doge')");
+//$userID = mysql_query("SELECT userid FROM users WHERE name = 'Doge'");
+// var_dump(mysql_query("INSERT INTO users
+// VALUES ('1000', 'Yuudachi', 13, 20, 100.50)"));
+createGroup($userID, "Hash tag cash money", 100.00, "d301334@drdrb.com");
 
-var_dump(mysql_query("INSERT INTO users
-VALUES ('1000', 'Yuudachi', 13, 20, 100.50)"));
+// var_dump(mysql_query("INSERT INTO groups
+// VALUES (13, 'Kantai Collection', 1000, 40000, 'kancolle')"));
 
-mysql_close($con);
+// var_dump(mysql_query("INSERT INTO users
+// VALUES ('1000', 'Yuudachi', 13, 20, 100.50)"));
 
 ?>
