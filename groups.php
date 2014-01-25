@@ -38,6 +38,8 @@ function createGroup($userID, $groupName, $cashPerPerson, $listEmails)
 	$getGroupID = "SELECT groupid FROM groups WHERE group_name = '" . $groupName . "'";
 	$groupID = mysql_query($getGroupID);
 	$groupPW = generatePassword();
+
+	echo $groupPW;
 	$setGroupPW = "UPDATE groups SET pass = '" . $groupPW . "' WHERE groupid = " . $groupID;
 	if (mysql_query($setGroupPW))
 		echo "Successfully created password";
@@ -119,12 +121,9 @@ function generatePassword()
 	{
 		echo "tester".$i;
 		$password = $randWords[(rand()) % 170] . $randWords[(rand()) % 170];
-		echo $password;
 		$findGroup = "SELECT groupid FROM groups WHERE pass = '" . $password . "'";
 		$result = mysql_query($findGroup);
 			if(mysql_num_rows($result) == 0) {
-					echo "loop Here";
-					echo $password;
 					return $password;
 				}
 			else if($result == $groupID)
