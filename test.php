@@ -1,7 +1,7 @@
 <?php
 
 echo 'test3';
-include 'groups.php';
+if (include 'groups.php' == 'OK') echo 'OK';
 echo "test2";
 //require_once ('./db_connect.php');
 
