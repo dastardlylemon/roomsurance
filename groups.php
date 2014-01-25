@@ -119,6 +119,7 @@ function generatePassword()
 	{
 		echo "tester".$i;
 		$password = $randWords[(rand()) % 170] . $randWords[(rand()) % 170];
+		echo $password;
 		$findGroup = "SELECT groupid FROM groups WHERE pass = '" . $password . "'";
 		$result = mysql_query($findGroup);
 			if(mysql_num_rows($result) == 0) {
