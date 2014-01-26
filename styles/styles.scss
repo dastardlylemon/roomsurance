@@ -161,6 +161,7 @@ body {
     font-family: $font-stack;
     font-weight: 700; 
     font-size: 30px;
+    color: $primary-color-light;
     text-align: center;
     position: absolute;
     top: 20px;
@@ -178,8 +179,18 @@ body {
     @include letterpress(rgba(0,0,0,0));
   }
 
+  .chore-title {
+    position: relative;
+    bottom: 40px;
+    left: 75px;
+  }
+
   .chore-desc {
     font-family: $body-font;
     font-size: 20px;
+    color: $primary-color-light;
+    position: relative;
+    bottom: 70px;
+    left: 75px;
   }
 }
