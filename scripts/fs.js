@@ -21,7 +21,7 @@ $(document).ready(function(){
       url: './utils/create_group.php',
       data: $('#host-form').serialize(),
       success: function(data) {
-        window.location = './app/?gid=' + 
+        window.location = './app/?gid=' + data;
       }
     });
     return false;
