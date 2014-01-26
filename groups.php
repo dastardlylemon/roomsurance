@@ -39,24 +39,24 @@ function createGroup($userID, $groupName, $cashPerPerson, $listEmails)
 	$getGroupID = "SELECT groupid FROM groups WHERE group_name = '" . $groupName . "'";
 	$groupID = mysql_query($getGroupID);
 	settype($groupID, "int");
-
-	echo $groupID;
 	$groupPW = generatePassword();
 
-	echo $groupPW;
 	$setGroupPW = "UPDATE groups SET pass = '" . $groupPW . "' WHERE groupid = " . $groupID;
+	echo $setGroupPW;
 	if (mysql_query($setGroupPW))
 		echo "Successfully created password";
 	else
 		echo "Could not create password";
 	$setGroupID = "UPDATE users SET usergroup = " . $groupID . " WHERE userid = '" . $userID ."'";
+	echo $setGroupID;
+	
 	if (mysql_query($setGroupID))
 		echo "Successfully joined group " . $groupName;
 	else
 		echo "Error joining the group: " . mysql_error($db);
 	$putCash = "UPDATE users SET cash = " . $cashPerPerson . " AND points = 1000 WHERE userid = '" . $userID . "'";
 	if (mysql_query($putCash))
-		echo "You now have $" . $getCashVal;
+		echo "You now have $" . $cashPerPerson;
 	else
 		echo "Could not add cash";
 	sendEntryMail($listEmails, $groupID);
