@@ -48,8 +48,6 @@
   };
 
   function createUser(id, name) {
-    console.log(id + ' ' + name);
-    
     $.ajax({
       url: './create_user.php',
       data: {'userID': id, 'userName': name},
