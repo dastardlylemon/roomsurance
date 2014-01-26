@@ -145,10 +145,13 @@ function createChore($choreName, $pointValue, $groupID, $userID = "0", $chore_de
 
 function getChores($groupID)
 {
-	$findChores = "SELECT * FROM chores WHERE groupid = " . $groupID;
+	$arr = array();
+	$findChores = "SELECT choreid FROM chores WHERE groupid = " . $groupID;
 	$result = mysql_query($findChores);
-	$row = mysql_fetch_array($result, MYSQL_NUM);
-	return $row;
+	while ($row = mysql_fetch_assoc($result))
+		$arr = $row;
+	var_dump $arr;
+	return $arr;
 }
 
 function generateUniqueGroupID()
@@ -156,7 +159,7 @@ function generateUniqueGroupID()
 for($i = 0; $i < 100; $i++)
 {
 	$groupID = rand();
-	$findGroupID = "SELECT groupid FROM groups WHERE groupID = " . $groupID;
+	$findGroupID = "SELECT * FROM groups WHERE groupID = " . $groupID;
 		$result = mysql_query($findGroupID);
 			if(mysql_num_rows($result) == 0) {
 					return $groupID;
