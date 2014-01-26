@@ -1,5 +1,5 @@
 <?php
-  require_once("./db_connect.php");
+  require_once("./utils/db_connect.php");
 ?>
 
 <!doctype html>
@@ -29,6 +29,8 @@
     <form id="host-form" style="display: none">
       <input type="text" name="gname" class="none-form" placeholder="Enter your group&rsquo;s name"><br>
       <input type="text" name="gmails" class="none-form" placeholder="Enter the group members&rsquo; emails, separated by commas"><br>
+      <input type="text" name="gmoney" class="none-form" placeholder="Enter the amount each person is paying"><br>
+      <input type="hidden" name="guid" value="">
       <input type="submit" class="none-button" id="host-submit" value="Let&rsquo;s go">
     </form>
     <form id="join-form" style="display: none">
@@ -49,7 +51,7 @@
 
   function createUser(id, name) {
     $.ajax({
-      url: './create_user.php',
+      url: './utils/create_user.php',
       data: {'userID': id, 'userName': name},
       type: 'post',
       success: function(output) {
@@ -69,6 +71,7 @@
               name = response.first_name;
             });
             createUser(user_id, name);
+            $('[name=guid]').val(user_id);
             $('#content-login').fadeOut(function() {
               $('#content-none').fadeIn();
             });  
@@ -83,6 +86,7 @@
           name = response.first_name;
         });
         createUser(user_id, name);
+        $('[name=guid]').val(user_id);
         $('#content-login').fadeOut(function() {
           $('#content-none').fadeIn();
         });

@@ -46,6 +46,20 @@ function checkUser($userID)
 		return false;
 }
 
+function getGroup($userID)
+{
+	$getGroup = "SELECT usergroup FROM users WHERE userid = '" . $userID;
+	$newGroupID = mysql_query($getGroup);
+	if (!$newGroupID)
+		return 0;
+	else
+	{
+		$groupID = mysql_fetch_assoc($newGroupID);
+		$groupID = $groupID['groupid'];
+		return $groupID;
+	}
+}
+
 // To create a group, input the userID, desired group name, starting money of each person, and the list of group members you want to email
 function createGroup($userID, $groupName, $cashPerPerson, $listEmails)
 {
@@ -54,7 +68,7 @@ function createGroup($userID, $groupName, $cashPerPerson, $listEmails)
 		echo "Successfully created group " . $groupName;
 	else
 		echo "Group could not be created because " . mysql_error($db);
-	$getGroupID = "SELECT groupid FROM groups WHERE group_name = '" . $groupName . "' LIMIT 1";
+	$getGroupID = "SELECT groupid FROM groups WHERE group_name = '" . $groupName . "' LIMIt 1";
 	$newGroupID = mysql_query($getGroupID);
 	$groupID = mysql_fetch_assoc($newGroupID);
 	$groupID = $groupID['groupid'];
@@ -122,22 +136,11 @@ function createChore($choreName, $pointValue, $groupID, $userID = "0", $chore_de
 						$due_Date, $complete)
 {
 	$due_Date = date("Y-m-d");
-	$newChore = "INSERT INTO chores (chore_name, chore_descrip, difficulty, length, sug_points, act_points, due_date, taskgroup, taskuser, completed) VALUES ('" . $choreName . "', '" . $chore_description . "', " . $diffi . ", " . $timer . ", " . $sugPoints . ", " . $due_Date . ", '" . $userID . "', " . $complete . ")";
+	$newChore = "INSERT INTO chores (chore_name, chore_descrip, difficulty, length, sug_points, act_points, due_date, taskgroup, taskuser, completed) VALUES ('" . $choreName . "', '" . $chore_description . "', " . $diffi . ", " . $timer . ", " . $sugPoints . ", " . $due_Date . ", '" . $userID . "', 0)";
 	if (mysql_query($newChore))
 		echo "Successfully created chore " . $choreName;
 	else
 		echo "Chore could not be created because " . mysql_error($db);
-}
-
-function getChores($groupID)
-{
-	$arr = array();
-	$findChores = "SELECT choreid FROM chores WHERE groupid = " . $groupID;
-	$result = mysql_query($findChores);
-	while ($row = mysql_fetch_assoc($result))
-		$arr = $row;
-	var_dump $arr;
-	return $arr;
 }
 
 function generateUniqueGroupID()
@@ -145,7 +148,7 @@ function generateUniqueGroupID()
 for($i = 0; $i < 100; $i++)
 {
 	$groupID = rand();
-	$findGroupID = "SELECT * FROM groups WHERE groupID = " . $groupID;
+	$findGroupID = "SELECT groupid FROM groups WHERE groupID = " . $groupID;
 		$result = mysql_query($findGroupID);
 			if(mysql_num_rows($result) == 0) {
 					return $groupID;
