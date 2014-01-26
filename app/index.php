@@ -12,11 +12,16 @@ function getChores($groupID)
 
 function printChores($groupID){
   $array = getChores($groupID);
+  if ($array[$i][taskuser]) 
+    $owner = $array[$i][taskuser];
+  else
+    $owner = 'no one';
   for ($i = 0; $i < count($array); $i++) {
     echo '<div class="chore" id ="choreID' .$array[$i][choreid] . '">' .
       '<div class="chore-date">' . date('M', strtotime($array[$i][due_date])) .'<br><b>' . date('d', strtotime($array[$i][due_date])) . '</b></div>' .
       '<h4 class="chore-title">' . $array[$i][chore_name] . ' </h4>' .  
       '<h5 class="chore-desc">' . $array[$i][chore_descrip] .' </h5>' .
+      '<div class="chore-diff">Assigned to ' . $owner . ' </div>' .
       '<div class="chore-diff">Difficulty: ' . $array[$i][difficulty] . ' </div>' .   
       '<div class="chore-length">Length: ' . $array[$i][length] .' mins.</div>' . 
       '<div class="chore-points">Points:' . $array[$i][act_points] .' </div></div>'; 
