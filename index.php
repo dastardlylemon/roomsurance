@@ -51,7 +51,8 @@
     FB.login(function (response) {
       if (response.authResponse) {
         console.log('fetching ur info');
-        access_token = response.authReponse.accessToken;
+        console.log(response.authResponse);
+        access_token = response.authResponse.accessToken;
         user_id = response.authResponse.userID;
         FB.api('/me', function (response) {
           user_email = response.email;
