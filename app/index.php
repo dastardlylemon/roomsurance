@@ -29,7 +29,7 @@ function printChores($groupID){
 <head>
   <meta charset="utf-8">
   <title>Roomsurance</title>
-  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="../styles/styles.css">
    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 </head>
 
@@ -42,6 +42,7 @@ function printChores($groupID){
       <?php 
         $uid = $_POST['guid'];
         $gid = $_POST['gid'];
+        echo $gid;
         printChores($gid); 
       ?>
     </div>
