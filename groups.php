@@ -88,19 +88,27 @@ function joinGroup($userID, $groupPW)
 
 function removeGroup($groupName)
 {
-	
-$didItWork = mysqli_query("DELETE FROM groups WHERE groupid= $groupName");
-if($didItWork)
-	echo "Group Deleted.  Come back next time!";
-else
-	echo "Something went wrong! Please try again in a couple of minutes";
+	$didItWork = mysqli_query("DELETE FROM groups WHERE groupid= $groupName");
+	if($didItWork)
+		echo "Group Deleted.  Come back next time!";
+	else
+		echo "Something went wrong! Please try again in a couple of minutes";
 }
 
-//function createChore($choreName, $pointValue, $groupID, $userID = "0", $chore_discription = "", $diffi = 0, $time = 0, $sugPoints = 0,
-//						$due_Date = 0)
-//{
+function getGroup($groupID)
+{
+	
+}
 
-//}
+function createChore($choreName, $pointValue, $groupID, $userID = "0", $chore_description = "", $diffi = 0, $timer = 0, $sugPoints = 0,
+						$due_Date = 0, $complete)
+{
+	$newChore = "INSERT INTO chores (chore_name, chore_descrip, difficulty, length, sug_points, act_points, due_date, taskgroup, taskuser, completed) VALUES ('" . $choreName . "', '" . $chore_description . "', " . $diffi . ", " . $timer . ", " . $sugPoints . ", " . $due_Date . ", '" . $userID . "', " . $complete . ")";
+	if (mysql_query($newChore))
+		echo "Successfully created chore " . $choreName;
+	else
+		echo "Chore could not be created because " . mysql_error($db);
+}
 
 function generateUniqueGroupID()
 {
@@ -115,11 +123,6 @@ for($i = 0; $i < 100; $i++)
 }
 	echo "it's boned";
 	return -1;
-}
-
-function getPassword($groupID)
-{
-
 }
 
 //difficultyVal should be between 0 and 10; $timeVal should be time taken in minutes
