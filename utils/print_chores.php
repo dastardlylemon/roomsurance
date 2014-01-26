@@ -15,7 +15,7 @@ echo "test3";
 function printChores($groupID){
 $array = getChores($groupID);
 echo "test4";
-echo $array[0][choreid];
+echo $array[0]['choreid'];
 for ($i = 0; $i < count($array); $i++)
 {
 	echo '<div class="superWrapper" id ="choreID' .$array[$i][choreid] . '">' .
