@@ -1,5 +1,5 @@
 <?php
-  require_once("./db_connect.php");
+  require_once("./utils/db_connect.php");
 ?>
 
 <!doctype html>
@@ -49,7 +49,7 @@
 
   function createUser(id, name) {
     $.ajax({
-      url: './create_user.php',
+      url: './utils/create_user.php',
       data: {'userID': id, 'userName': name},
       type: 'post',
       success: function(output) {
