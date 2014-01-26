@@ -36,5 +36,5 @@ $putCash = "UPDATE users SET cash = " . $cashVal . " AND points = 1000 WHERE use
  // echo "Could not add cash";
 calculateTotalPoints($getGroupID);
 
-return $groupID;
+echo $groupID;
 ?>
