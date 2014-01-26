@@ -33,6 +33,7 @@ function getGroupName($groupID){
   $findGroup = "SELECT group_name FROM groups WHERE groupid = " . $groupID;
   $res = mysql_query($findGroup);
   echo $res[0]["group_name"];
+  echo 'faklegjel;agl;eakj';
 }
 
 $uid = $_REQUEST['guid'];
