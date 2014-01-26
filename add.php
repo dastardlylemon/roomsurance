@@ -27,10 +27,10 @@
 	</div>
 </body>
 <script>
-	function updateTask(taskID, taskName, taskDesc, diff, len, points, due, userID, comp) {
+	function createChore(choreName, pointValue, groupID, userID, chore_description, diffi, timer, due_Date) {
 	    $.ajax({
 	      url: './utils/update_task.php',
-	      data: {'taskID': taskID, 'taskName': taskName, 'taskDesc': taskDesc, 'diff': diff, 'length': len, acpoints': points, 'dueDate': due, 'user': userID, 'status': comp},
+	     data: {'taskName': choreName, 'taskDesc': chore_description, 'diff': diffi, 'acpoints': pointValue, 'dueDate': due_Date, 'user': userID, 'group': groupID, 'len': timer},
 	      type: 'post',
 	      success: function(output) {
 	        console.log(output);
