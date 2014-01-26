@@ -45,7 +45,9 @@ function generatePassword() {
   echo "we ducked up the password. sorry.";
 }
 
-echo $_POST['gmails'];
+$groupName = $_POST['gname'];
+$cashPerPerson = $_POST['gmoney'];
+$listEmails = $_POST['gmails'];
 
 $newGroup = "INSERT INTO groups (group_name, cash_per) VALUES ('" . $groupName . "', " . $cashPerPerson . ")";
 if (mysql_query($newGroup))
