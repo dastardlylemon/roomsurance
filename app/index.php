@@ -30,7 +30,8 @@ function printChores($groupID){
 
 function getGroupName($groupID){
   $findGroup = "SELECT group_name FROM groups WHERE groupid = " . $groupID;
-  return mysql_query($findGroup);
+  $res = mysql_query($findGroup);
+  return $res[group_name];
 }
 
 $uid = $_REQUEST['guid'];
@@ -48,7 +49,7 @@ $gid = $_REQUEST['gid'];
 
 <body>
   <div id="header">
-    <h3><?php getGroupName($gid); ?>/h3>
+    <h3><?php getGroupName($gid); ?></h3>
   </div><br><br><br><br><br><br>
   <div id="content">
     <div id="chore-list">
