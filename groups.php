@@ -26,6 +26,7 @@ function sendEntryMail($emailString, $groupID)	//sends an entry email to everyon
 	} //should work, theoretically.
 }
 
+// To create a group, input the userID, desired group name, starting money of each person, and the list of group members you want to email
 function createGroup($userID, $groupName, $cashPerPerson, $listEmails)
 {
 	$newGroup = "INSERT INTO groups (group_name, cash_per) VALUES ('" . $groupName . "', " . $cashPerPerson . ")";
@@ -60,6 +61,7 @@ function createGroup($userID, $groupName, $cashPerPerson, $listEmails)
 	sendEntryMail($listEmails, $groupID);
 }
 
+// To join a group, input your user id, and the unique password you were emailed
 function joinGroup($userID, $groupPW)
 {
 	$findGroup = "SELECT groupid FROM groups WHERE pass = '" . $groupPW . "' LIMIT 1";
