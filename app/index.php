@@ -21,10 +21,10 @@ function printChores($groupID){
       '<div class="chore-date">' . date('M', strtotime($array[$i][due_date])) .'<br><b>' . date('d', strtotime($array[$i][due_date])) . '</b></div>' .
       '<h4 class="chore-title">' . $array[$i][chore_name] . ' </h4>' .  
       '<h5 class="chore-desc">' . $array[$i][chore_descrip] .' </h5>' .
-      '<div class="chore-diff">Assigned to ' . $owner . ' </div>' .
-      '<div class="chore-diff">Difficulty: ' . $array[$i][difficulty] . ' </div>' .   
-      '<div class="chore-length">Length: ' . $array[$i][length] .' mins.</div>' . 
-      '<div class="chore-points">Points:' . $array[$i][act_points] .' </div></div>'; 
+      '<div class="chore-stats">Assigned to ' . $owner .
+      ' | Difficulty: ' . $array[$i][difficulty] .   
+      ' | Length: ' . $array[$i][length] .' mins' . 
+      ' | Points:' . $array[$i][act_points] .' </div></div>'; 
   }
 }
 
