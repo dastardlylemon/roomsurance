@@ -31,10 +31,7 @@ function printChores($groupID){
 function getGroupName($groupID){
   $findGroup = "SELECT group_name FROM groups WHERE groupid = " . $groupID;
   $res = mysql_query($findGroup);
-  while ($row = mysql_fetch_array($res)) {
-  var_dump($row);
-}
-  return settype($res, "string");
+  echo $res['group_name'];
 }
 
 $uid = $_REQUEST['guid'];
