@@ -157,10 +157,11 @@ body {
   /* stops bg color from leaking outside the border: */ }
   .chore .chore-date {
     font-weight: 700; }
-  .chore .chore-desc {
-    font-family: "Open Sans", Helvetica, sans-serif; }
   .chore h4, .chore h5 {
     text-align: left;
     color: #576fac;
-    font-size: 150%;
+    font-size: 200%;
     text-shadow: rgba(0, 0, 0, 0) 0 -2px 0; }
+  .chore .chore-desc {
+    font-family: "Open Sans", Helvetica, sans-serif;
+    font-size: 20px; }

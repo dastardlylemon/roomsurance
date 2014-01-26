@@ -159,14 +159,15 @@ body {
     font-weight: 700; 
   }
 
-  .chore-desc {
-    font-family: $body-font;
-  }
-
   h4, h5 {
     text-align: left;
     color: $primary-color-dark;
-    font-size: 150%;
+    font-size: 200%;
     @include letterpress(rgba(0,0,0,0));
+  }
+
+  .chore-desc {
+    font-family: $body-font;
+    font-size: 20px;
   }
 }
