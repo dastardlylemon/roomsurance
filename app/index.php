@@ -67,7 +67,7 @@ $gid = $_REQUEST['gid'];
 
 <body>
   <div id="header">
-    <h1><?php getGroupName($gid); getGroupUsers($gid); ?></h1>
+    <h1><?php getGroupName($gid); ?></h1>
   </div><br><br><br><br><br><br>
   <div id="content">
     <div id="chore-list">
