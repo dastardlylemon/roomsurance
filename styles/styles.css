@@ -57,12 +57,14 @@ body {
   font-family: "Open Sans", Helvetica, sans-serif; }
 
 #header {
-  position: absolute;
-  height: 100px;
   width: 960px;
   display: block;
   margin-left: auto;
   margin-right: auto; }
+  #header h1 {
+    margin-bottom: -100px;
+    margin-top: 0px;
+    text-align: left; }
 
 #content-none, #content-login,
 #content {

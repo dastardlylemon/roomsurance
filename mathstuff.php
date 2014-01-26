@@ -1,7 +1,7 @@
 <?php
   require_once("../db_connect.php");
 
-  function Chores($dueDate, $pointVal, ,$complete, $personAsgn, $peronDid)
+  function Chores($dueDate, $pointVal, ,$complete, $personAsgn, $personDid)
   {
 <<<<<<< HEAD
   	$today = date('Y-m-d');
@@ -18,16 +18,16 @@
                   $row = mysql_fetch_assoc($results);
                   $points = $row['points'];
                   $newPoints = $points - $pointVal;
-                  $doesthismatter = "UPDATE users SET points = '" . $newPoints . "'";
+                  $doesthismatter = "UPDATE users SET points = '" . $newPoints . " WHERE userid = '" . $personAsgn . "'";
            }
-          if($complete == 1 && (strcmp($personAsgn, $peronDid) != 0))
+          if($complete == 1 && (strcmp($personAsgn, $personDid) != 0))
           {
-                  $curPoints2 = "SELECT points FROM users WHERE userid = '" . $peronDid . "'";
+                  $curPoints2 = "SELECT points FROM users WHERE userid = '" . $personDid . "'";
                   $result = mysql_execute($curPoints2);
                   $row2 = mysql_fetch_assoc($result);
                   $points2 = $row['points'];
                   $newPoints2 = $points2 + $pointVal;
-                  $jamessenpai = "UPDATE users SET points = '" . $newPoints . "'";
+                  $jamessenpai = "UPDATE users SET points = '" . $newPoints . " WHERE userid = '" . $personDid . "'";
         }
 >>>>>>> 05e2c51ba59a3ad24625236e27732c6ebfaaced1
   }

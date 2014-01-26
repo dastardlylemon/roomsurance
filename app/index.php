@@ -12,11 +12,12 @@ function getChores($groupID)
 
 function printChores($groupID){
   $array = getChores($groupID);
-  if ($array[$i][taskuser]) 
-    $owner = $array[$i][taskuser];
-  else
-    $owner = 'no one';
   for ($i = 0; $i < count($array); $i++) {
+    if ($array[$i][taskuser]) 
+      $owner = $array[$i][taskuser];
+    else
+      $owner = 'no one';
+
     echo '<div class="chore" id ="choreID' .$array[$i][choreid] . '">' .
       '<div class="chore-date">' . date('M', strtotime($array[$i][due_date])) .'<br><b>' . date('d', strtotime($array[$i][due_date])) . '</b></div>' .
       '<h4 class="chore-title">' . $array[$i][chore_name] . ' </h4>' .  
@@ -31,7 +32,8 @@ function printChores($groupID){
 function getGroupName($groupID){
   $findGroup = "SELECT group_name FROM groups WHERE groupid = " . $groupID;
   $res = mysql_query($findGroup);
-  return $res[group_name];
+  $vals = mysql_fetch_assoc($res);
+  echo $vals['group_name'];
 }
 
 $uid = $_REQUEST['guid'];
@@ -49,7 +51,7 @@ $gid = $_REQUEST['gid'];
 
 <body>
   <div id="header">
-    <h3><?php getGroupName($gid); ?></h3>
+    <h1><?php getGroupName($gid); ?></h1>
   </div><br><br><br><br><br><br>
   <div id="content">
     <div id="chore-list">

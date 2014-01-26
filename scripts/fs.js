@@ -21,7 +21,7 @@ $(document).ready(function(){
       url: './utils/create_group.php',
       data: $('#host-form').serialize(),
       success: function(data) {
-        console.log(data);
+        window.location = './app/?gid=' + data;
       }
     });
     return false;
@@ -33,7 +33,7 @@ $(document).ready(function(){
       url: './utils/join_group.php',
       data: $('#join-form').serialize(),
       success: function(data) {
-        console.log(data);
+        window.location = './app/?gid=' + data;
        }
     });
     return false;
