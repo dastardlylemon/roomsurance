@@ -48,6 +48,8 @@
   };
 
   function createUser(id, name) {
+    console.log(id + ' ' + name);
+    
     $.ajax({
       url: './create_user.php',
       data: {'userID': id, 'userName': name},
@@ -82,7 +84,6 @@
         FB.api('/me', function (response) {
           name = response.name;
         });
-        console.log(user_id + ' ' + name);
         createUser(user_id, name);
         $('#content-login').fadeOut(function() {
           $('#content-none').fadeIn();

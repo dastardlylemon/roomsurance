@@ -6,3 +6,4 @@
     return $_POST['userID'];
   else
     return false;
+?>
