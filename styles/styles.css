@@ -161,4 +161,6 @@ body {
     font-family: "Open Sans", Helvetica, sans-serif; }
   .chore h4, .chore h5 {
     text-align: left;
-    color: #576fac; }
+    color: #576fac;
+    font-size: 150%;
+    text-shadow: rgba(0, 0, 0, 0) 0 -2px 0; }
