@@ -48,19 +48,27 @@
   };
 
   function fbLogin() {
-    FB.login(function (response) {
-      if (response.authResponse) {
-        console.log('fetching ur info');
-        console.log(response.authResponse);
+    FB.getLoginStatus(function (response) {
+      if (response.status !== 'connected') {
+        FB.login(function (response) {
+          if (response.authResponse) {
+            access_token = response.authResponse.accessToken;
+            user_id = response.authResponse.userID;
+            $('#content-login').fadeOut(function() {
+              $('#content-none').fadeIn();
+            });  
+          } else {
+            console.log('cancelled login');
+          }
+        })
+      } else {
         access_token = response.authResponse.accessToken;
         user_id = response.authResponse.userID;
-        FB.api('/me', function (response) {
-          user_email = response.email;
+        $('#content-login').fadeOut(function() {
+          $('#content-none').fadeIn();
         });
-      } else {
-        console.log('cancelled login');
       }
-    })
+    }
   }
 
   (function () {
