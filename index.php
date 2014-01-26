@@ -35,6 +35,7 @@
     </form>
     <form id="join-form" style="display: none">
       <input type="text" name="gid" class="none-form" placeholder="Enter your group password"><br>
+      <input type="hidden" name="guid" value="">
       <input type="submit" class="none-button" id="join-submit" value="Let&rsquo;s go">
     </form>  
   </div>

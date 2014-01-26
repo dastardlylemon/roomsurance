@@ -16,7 +16,6 @@ $(document).ready(function(){
   });
 
   $('#host-form').submit(function() {
-    console.log($('#host-form').serialize());
     $.ajax({
       type: 'post',
       url: './utils/create_group.php',
@@ -25,8 +24,18 @@ $(document).ready(function(){
         console.log(data);
       }
     });
-
     return false;
   });
 
+  $('#join-form').submit(function() {
+    $.ajax({
+      type: 'post',
+      url: './utils/join_group.php',
+      data: $('#join-form').serialize(),
+      success: function(data) {
+        console.log(data);
+       }
+    });
+    return false;
+  });
 });
