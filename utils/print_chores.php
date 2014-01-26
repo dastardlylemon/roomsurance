@@ -9,7 +9,6 @@ function getChores($groupID)
 	$result = mysql_query($findChores);
 	while ($row = mysql_fetch_assoc($result))
 		$arr = $row;
-	var_dump $arr;
 	return $arr;
 }
 echo "test3";
