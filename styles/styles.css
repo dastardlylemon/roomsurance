@@ -165,7 +165,8 @@ body {
     text-align: center;
     position: absolute;
     top: 20px;
-    left: 20px; }
+    left: 20px;
+    opacity: 0.7; }
     .chore .chore-date b {
       font-size: 50px; }
   .chore h4, .chore h5 {
@@ -183,4 +184,5 @@ body {
     color: #7697ed;
     position: relative;
     bottom: 70px;
-    left: 75px; }
+    left: 75px;
+    opacity: 0.7; }
