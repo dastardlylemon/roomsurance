@@ -46,6 +46,9 @@ h1 {
   margin-bottom: -10px;
   margin-top: 100px; }
 
+h2 {
+  font-size: 17px; }
+
 h3 {
   font-size: 30px; }
 
@@ -54,27 +57,24 @@ body {
   font-family: "Open Sans", Helvetica, sans-serif; }
 
 #header {
-  background-color: #fff;
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
   height: 100px; }
-  #header h3 {
-    color: #6c8ad7; }
 
-#content-none, #content-login {
+#content-none, #content-login,
+#content {
   width: 960px;
   padding: 20px;
   display: block;
   margin-left: auto;
   margin-right: auto; }
-  #content-none #button-group, #content-login #button-group {
+  #content-none #button-group, #content-login #button-group,
+  #content #button-group {
     width: 600px;
     display: block;
     margin-left: auto;
     margin-right: auto; }
-    #content-none #button-group #join, #content-login #button-group #join {
+    #content-none #button-group #join, #content-login #button-group #join,
+    #content #button-group #join {
       float: right; }
 
 #content-login .none-button {

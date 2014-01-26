@@ -25,8 +25,6 @@ function printChores($groupID){
 
 $uid = $_REQUEST['guid'];
 $gid = $_REQUEST['gid'];
-echo "hi";
-echo $gid;
 ?>
 
 <!doctype html>
@@ -45,7 +43,6 @@ echo $gid;
   <div id="content">
     <div id="chore-list">
       <?php 
-        echo $gid;
         printChores($gid); 
       ?>
     </div>
