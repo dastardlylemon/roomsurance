@@ -53,8 +53,7 @@
       data: {'userID': id, 'userName': name},
       type: 'post',
       success: function(output) {
-        if (output) console.log(output);
-        else console.log('you fucked up');
+        console.log(output);
       }
     });
   }
