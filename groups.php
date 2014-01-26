@@ -26,6 +26,16 @@ function sendEntryMail($emailString, $groupID)	//sends an entry email to everyon
 	} //should work, theoretically.
 }
 
+// Input user's ID and name from Facebook
+function createUser($userID, $userName)
+{
+	$newUser = "INSERT INTO users (userid, name) VALUES ('" . $userID . "', '" . $userName . "')";
+	if (mysql_query($newUser))
+		echo "Successfully created user " . $userName;
+	else
+		echo "User could not be created because " . mysql_error($db);
+}
+
 // To create a group, input the userID, desired group name, starting money of each person, and the list of group members you want to email
 function createGroup($userID, $groupName, $cashPerPerson, $listEmails)
 {
@@ -96,12 +106,6 @@ function removeGroup($groupID)
 		echo "Group Deleted.  Come back next time!";
 	else
 		echo "Something went wrong! Please try again in a couple of minutes";
-}
-
-// User passes in the groupid of the group they are in
-function getGroup($groupID)
-{
-
 }
 
 function createChore($choreName, $pointValue, $groupID, $userID = "0", $chore_description = "", $diffi = 0, $timer = 0, $sugPoints = 0,
