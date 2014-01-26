@@ -142,7 +142,8 @@ body {
 
 .chore {
   background-color: #fff;
-  width: 960px;
+  width: 920px;
+  padding: 20px;
   color: #576fac;
   display: block;
   margin-left: auto;

@@ -149,7 +149,8 @@ body {
 
 .chore {
   background-color: #fff;
-  width: 960px;
+  width: 920px;
+  padding: 20px;
   color: $primary-color-dark;
   @include center-block;
   @include border-radius(5px);
