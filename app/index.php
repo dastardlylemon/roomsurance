@@ -2,25 +2,50 @@
 require_once ('../utils/db_connect.php');
 function getChores($groupID)
 {
-	$arr = array();
-	$findChores = "SELECT * FROM chores WHERE taskgroup = " . $groupID;
-	$result = mysql_query($findChores);
-	while ($row = mysql_fetch_assoc($result))
-		$arr[] = $row;
-	return $arr;
-}
-function printChores($groupID){
-$array = getChores($groupID);
-for ($i = 0; $i < count($array); $i++)
-{
-	echo '<div class="superWrapper" id ="choreID' .$array[$i][choreid] . '">' .
-		'<div class="choreTitle">' . $array[$i][chore_name] . ' </div>' .  '<div class="choreDescription">' . $array[$i][chore_description] .' </div>' .
-		 '<div class="choreDifficulty">' . $array[$i][difficulty] . ' </div>' .   '<div class="choreLength">' . $array[$i][length] .' </div>' . 
-		  '<div class="choreSugPoints">' . $array[$i][sugPoints].' </div>' .  '<div class="choreActualPoints">' . $array[$i][act_points] .' </div>' . 
-		 '<div class="choreDueDate">' . $array[$i][due_date].' </div></div>'; 
-}
+  $arr = array();
+  $findChores = "SELECT * FROM chores WHERE taskgroup = " . $groupID;
+  $result = mysql_query($findChores);
+  while ($row = mysql_fetch_assoc($result))
+    $arr[] = $row;
+  return $arr;
 }
 
-//TEST CODE. REMOVE BEFORE EVERYTHING GOES BAD.
-printChores(261);
+function printChores($groupID){
+  $array = getChores($groupID);
+  for ($i = 0; $i < count($array); $i++) {
+    echo '<div class="chore" id ="choreID' .$array[$i][choreid] . '">' .
+      '<div class="chore-title">' . $array[$i][chore_name] . ' </div>' .  
+      '<div class="chore-desc">' . $array[$i][chore_descrip] .' </div>' .
+      '<div class="chore-diff">' . $array[$i][difficulty] . ' </div>' .   
+      '<div class="chore-length">' . $array[$i][length] .' </div>' . 
+      '<div class="chore-points">' . $array[$i][act_points] .' </div>' . 
+      '<div class="chore-date">' . $array[$i][due_date].' </div></div>'; 
+  }
+}
 ?>
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Roomsurance</title>
+  <link rel="stylesheet" href="./styles.css">
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+
+<body>
+  <div id="header">
+    <h3>Group name</h3>
+  </div><br><br><br><br><br><br>
+  <div id="content">
+    <div id="chore-list">
+      <?php 
+        $uid = $_POST['guid'];
+        $gid = $_POST['gid'];
+        printChores($gid); 
+      ?>
+    </div>
+  </div>
+
+</body>
+</html>
