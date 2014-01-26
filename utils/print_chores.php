@@ -2,7 +2,16 @@
 echo "test1";
 require_once ('./db_connect.php');
 echo "test2";
-include '../groups.php';
+function getChores($groupID)
+{
+	$arr = array();
+	$findChores = "SELECT choreid FROM chores WHERE groupid = " . $groupID;
+	$result = mysql_query($findChores);
+	while ($row = mysql_fetch_assoc($result))
+		$arr = $row;
+	var_dump $arr;
+	return $arr;
+}
 echo "test3";
 function printChores($groupID){
 $array = getChores($groupID);
