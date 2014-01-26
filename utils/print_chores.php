@@ -1,10 +1,13 @@
 <?
 php
+echo "test1";
 require_once ('./db_connect.php');
+echo "test2";
 include '../groups.php';
+echo "test3";
 function printChores($groupID){
 $array = getChores($groupID);
-
+echo "test4";
 for ($i = 0; $i < count($array); $i++)
 {
 	echo '<div class="superWrapper" id ="choreID' .$array[$i][choreid] . '">' .
