@@ -46,6 +46,20 @@ function checkUser($userID)
 		return false;
 }
 
+function getGroup($userID)
+{
+	$getGroup = "SELECT usergroup FROM users WHERE userid = '" . $userID;
+	$newGroupID = mysql_query($getGroup);
+	if (!newGroupID)
+		return 0;
+	else
+	{
+		$groupID = mysql_fetch_assoc($newGroupID);
+		$groupID = $groupID['groupid'];
+		return $groupID;
+	}
+}
+
 // To create a group, input the userID, desired group name, starting money of each person, and the list of group members you want to email
 function createGroup($userID, $groupName, $cashPerPerson, $listEmails)
 {
@@ -122,7 +136,7 @@ function createChore($choreName, $pointValue, $groupID, $userID = "0", $chore_de
 						$due_Date, $complete)
 {
 	$due_Date = date("Y-m-d");
-	$newChore = "INSERT INTO chores (chore_name, chore_descrip, difficulty, length, sug_points, act_points, due_date, taskgroup, taskuser, completed) VALUES ('" . $choreName . "', '" . $chore_description . "', " . $diffi . ", " . $timer . ", " . $sugPoints . ", " . $due_Date . ", '" . $userID . "', " . $complete . ")";
+	$newChore = "INSERT INTO chores (chore_name, chore_descrip, difficulty, length, sug_points, act_points, due_date, taskgroup, taskuser, completed) VALUES ('" . $choreName . "', '" . $chore_description . "', " . $diffi . ", " . $timer . ", " . $sugPoints . ", " . $due_Date . ", '" . $userID . "', 0)";
 	if (mysql_query($newChore))
 		echo "Successfully created chore " . $choreName;
 	else
