@@ -45,10 +45,8 @@ function getGroupUsers($groupID){
   $arr = array();
   $findUsers = "SELECT userid FROM users WHERE usergroup = " . $groupID;
   $res = mysql_query($findUsers);
-  while ($row = mysql_fetch_assoc($res)) {
+  while ($row = mysql_fetch_assoc($res))
     $arr[] = getUserName($row['userid']);
-  }
-  echo var_dump($arr);
   return $arr;
 }
 
