@@ -57,7 +57,7 @@
           user_email = response.email;
         });
       } else {
-        console..log('cancelled login');
+        console.log('cancelled login');
       }
     })
   }
