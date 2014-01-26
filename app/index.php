@@ -36,20 +36,6 @@ function getGroupName($groupID){
   echo $vals['group_name'];
 }
 
-function getUserName($userID){
-  $findUser = "SELECT name FROM users WHERE userid = " . $userID;
-  return mysql_fetch_assoc(mysql_query($findUser))['name'];
-}
-
-function getGroupUsers($groupID){
-  $arr = array();
-  $findUsers = "SELECT userid FROM users WHERE usergroup = " . $groupID;
-  $res = mysql_query($findUsers);
-  while ($row = mysql_fetch_assoc($res))
-    $arr[] = getUserName($row['userid']);
-  return $arr;
-}
-
 $uid = $_REQUEST['guid'];
 $gid = $_REQUEST['gid'];
 ?>
