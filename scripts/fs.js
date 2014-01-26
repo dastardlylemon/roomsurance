@@ -14,4 +14,19 @@ $(document).ready(function(){
       $('#join-form').fadeIn();
     });
   });
+
+  $('#host-form').submit(function() {
+    console.log($('#host-form').serialize());
+    $.ajax({
+      type: 'post',
+      url: './utils/create_group.php',
+      data: $('#host-form').serialize(),
+      success: function(data) {
+        console.log(data);
+      }
+    });
+
+    return false;
+  });
+
 });
