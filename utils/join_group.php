@@ -1,6 +1,17 @@
 <?php
 require_once('./db_connect.php');
 
+function calculateTotalPoints($groupID)
+{
+  $sqlCall = "SELECT * FROM users WHERE groupid = " . $groupID;
+  $result = mysql_query($sqlCall);
+  $points = 0;
+  while ($row = mysql_fetch_array($result, MYSQL_ASSOC))
+    $points = $points + $row['points'];
+  $sqlPut = "UPDATE groups SET total_points = " . $points . " WHERE groupid = " . $groupID;
+  return $points;
+}
+
 $groupPW = $_POST['gid'];
 $userID = $_POST['guid'];
 
