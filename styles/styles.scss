@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Montserrat);
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans);
 @import 'reset';
 
@@ -154,4 +154,17 @@ body {
   color: $primary-color-dark;
   @include center-block;
   @include border-radius(5px);
+
+  .chore-date {
+    font-weight: 700; 
+  }
+
+  .chore-desc {
+    font-family: $body-font;
+  }
+
+  h4, h5 {
+    text-align: left;
+    color: $primary-color-dark;
+  }
 }
