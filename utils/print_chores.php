@@ -5,7 +5,7 @@ echo "test2";
 function getChores($groupID)
 {
 	$arr = array();
-	$findChores = "SELECT * FROM chores WHERE groupid = " . $groupID;
+	$findChores = "SELECT * FROM chores WHERE taskgroup = " . $groupID;
 	$result = mysql_query($findChores);
 	while ($row = mysql_fetch_assoc($result))
 		echo $row['choreid'];
