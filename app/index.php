@@ -1,5 +1,5 @@
 <?php
-require_once ('./db_connect.php');
+require_once ('../utils/db_connect.php');
 function getChores($groupID)
 {
 	$arr = array();
