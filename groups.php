@@ -50,7 +50,7 @@ function getGroup($userID)
 {
 	$getGroup = "SELECT usergroup FROM users WHERE userid = '" . $userID;
 	$newGroupID = mysql_query($getGroup);
-	if (!newGroupID)
+	if (!$newGroupID)
 		return 0;
 	else
 	{
