@@ -68,7 +68,7 @@
             access_token = response.authResponse.accessToken;
             user_id = response.authResponse.userID;
             FB.api('/me', function (response) {
-              name = response.name;
+              name = response.first_name;
             });
             createUser(user_id, name);
             $('#content-login').fadeOut(function() {
@@ -82,7 +82,7 @@
         access_token = response.authResponse.accessToken;
         user_id = response.authResponse.userID;
         FB.api('/me', function (response) {
-          name = response.name;
+          name = response.first_name;
         });
         createUser(user_id, name);
         $('#content-login').fadeOut(function() {
