@@ -48,7 +48,7 @@ $gid = $_REQUEST['gid'];
 
 <body>
   <div id="header">
-    <h3><?php getGroupName($gid); ?>/h3>
+    <h3><?php getGroupName($gid); ?></h3>
   </div><br><br><br><br><br><br>
   <div id="content">
     <div id="chore-list">
