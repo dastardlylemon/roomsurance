@@ -81,6 +81,10 @@ body {
   height: 100px;
   width: 960px;
   @include center-block;
+
+  h1 {
+    margin-bottom: 20px;
+  }
 }
 
 #content-none,

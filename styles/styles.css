@@ -63,6 +63,8 @@ body {
   display: block;
   margin-left: auto;
   margin-right: auto; }
+  #header h1 {
+    margin-bottom: 20px; }
 
 #content-none, #content-login,
 #content {
