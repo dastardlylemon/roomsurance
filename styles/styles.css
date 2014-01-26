@@ -43,7 +43,8 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   font-size: 50px;
-  margin-bottom: 0px; }
+  margin-bottom: -10px;
+  margin-top: 100px; }
 
 h3 {
   font-size: 30px; }
@@ -62,19 +63,24 @@ body {
   #header h3 {
     color: #6c8ad7; }
 
-#content {
+#content-none, #content-login {
   width: 960px;
   padding: 20px;
   display: block;
   margin-left: auto;
   margin-right: auto; }
-  #content #button-group {
+  #content-none #button-group, #content-login #button-group {
     width: 600px;
     display: block;
     margin-left: auto;
     margin-right: auto; }
-    #content #button-group #join {
+    #content-none #button-group #join, #content-login #button-group #join {
       float: right; }
+
+#content-login .none-button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
 
 .none-button {
   padding: 20px;
