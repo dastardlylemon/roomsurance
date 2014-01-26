@@ -143,6 +143,14 @@ function createChore($choreName, $pointValue, $groupID, $userID = "0", $chore_de
 		echo "Chore could not be created because " . mysql_error($db);
 }
 
+function getChores($groupID)
+{
+	$findChores = "SELECT * FROM chores WHERE groupid = " . $groupID;
+	$result = mysql_query($findChores);
+	$row = mysql_fetch_array($result, MYSQL_NUM);
+	return $row;
+}
+
 function generateUniqueGroupID()
 {
 for($i = 0; $i < 100; $i++)
