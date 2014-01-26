@@ -20,6 +20,7 @@ function sendEntryMail($emailString, $groupID)	//sends an entry email to everyon
 
 	$getGroupPW = "SELECT pass FROM groups WHERE groupid = " . $groupID;
 	$groupPW = mysql_query($getGroupPW);
+	settype($groupPW, "string");
 
 	for ($i = 0; $i < count($emails); $i++)
 	{
@@ -37,6 +38,9 @@ function createGroup($userID, $groupName, $cashPerPerson, $listEmails)
 		echo "Group could not be created because " . mysql_error($db);
 	$getGroupID = "SELECT groupid FROM groups WHERE group_name = '" . $groupName . "'";
 	$groupID = mysql_query($getGroupID);
+	settype($groupID, "int");
+
+	echo $groupID;
 	$groupPW = generatePassword();
 
 	echo $groupPW;
@@ -63,6 +67,7 @@ function joinGroup($userID, $groupPW)
 {
 	$findGroup = "SELECT groupid FROM groups WHERE pass = '" . $groupPW . "'";
 	$getGroupID = mysql_query($findGroup);
+	settype($groupGroupID, "int");
 	if (!$getgroup) echo "Could not find group with pass";
 	$findUser = "UPDATE users SET usergroup = " . $getGroupID . " WHERE userid = '" . $userID . "'";
 	if (mysql_query($findUser))
@@ -71,6 +76,7 @@ function joinGroup($userID, $groupPW)
 		echo "Error joining the group: " . mysql_error($db);
 	$getCash = "SELECT cash_per FROM groups WHERE groupid = " . $getGroupID;
 	$getCashVal = mysql_query($getCash);
+	settype($getCashVal, "int");
 	$putCash = "UPDATE users SET cash = " . $getCashVal . " AND points = 1000 WHERE userid = '" . $userID . "'";
 	if (mysql_query($putCash))
 		echo "You now have $" . $getCashVal;
