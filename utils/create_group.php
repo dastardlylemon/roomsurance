@@ -48,13 +48,14 @@ function generatePassword() {
 $groupName = $_POST['gname'];
 $cashPerPerson = $_POST['gmoney'];
 $listEmails = $_POST['gmails'];
+$userID = $_POST['guid'];
 
 $newGroup = "INSERT INTO groups (group_name, cash_per) VALUES ('" . $groupName . "', " . $cashPerPerson . ")";
 if (mysql_query($newGroup))
   echo "Successfully created group " . $groupName;
 else
   echo "Group could not be created because " . mysql_error($db);
-$getGroupID = "SELECT groupid FROM groups WHERE group_name = '" . $groupName . "' LIMIt 1";
+$getGroupID = "SELECT groupid FROM groups WHERE group_name = '" . $groupName . "' LIMIT 1";
 $newGroupID = mysql_query($getGroupID);
 $groupID = mysql_fetch_assoc($newGroupID);
 $groupID = $groupID['groupid'];
