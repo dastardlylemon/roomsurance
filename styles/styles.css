@@ -140,9 +140,13 @@ body {
   margin-left: auto;
   margin-right: auto; }
 
-#chore {
+.chore {
   background-color: #fff;
+  width: 960px;
   color: #576fac;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
