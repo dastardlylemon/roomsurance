@@ -156,7 +156,9 @@ body {
   background-clip: padding-box;
   /* stops bg color from leaking outside the border: */ }
   .chore .chore-date {
-    font-weight: 700; }
+    font-family: "Montserrat", Helvetica, sans-serif;
+    font-weight: 700;
+    font-size: 50px; }
   .chore h4, .chore h5 {
     text-align: left;
     color: #576fac;
