@@ -153,7 +153,8 @@ body {
   padding: 20px;
   color: $primary-color-dark;
   position: relative;
-  padding-bottom: 20px;
+  height: 120px;
+  margin-bottom: 20px;
   @include center-block;
   @include border-radius(5px);
 
@@ -201,5 +202,7 @@ body {
     opacity: 0.7;
     color: $primary-color-light;
     text-transform: uppercase;
+    position: absolute;
+    top: 120px;
   }
 }
