@@ -13,8 +13,7 @@ mysql_query("INSERT INTO users (userid, name) VALUES ('1389', Coinye')");
 // var_dump(mysql_query("INSERT INTO users
 // VALUES ('1000', 'Yuudachi', 13, 20, 100.50)"));
 createGroup('1389', "Hash tag cache monet", 100.00, "d301334@drdrb.com");
-for($i = 0; $i < 100; $i++)
-	echo generateUniqueGroupID();
+
 // var_dump(mysql_query("INSERT INTO groups
 // VALUES (13, 'Kantai Collection', 1000, 40000, 'kancolle')"));
 
