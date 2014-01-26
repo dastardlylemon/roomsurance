@@ -3,13 +3,11 @@
 
   function Chores($dueDate, $pointVal, ,$complete, $personAsgn, $personDid)
   {
-<<<<<<< HEAD
   	$today = date('Y-m-d');
   	if(($today < $dueDate) && ($complete == 0)
   		$personAsgnPoints -= $pointVal;
   	if($complete == 1 && (strcmp($personAsgn, $peronDid) != 0))
   		$peronDidPoints += $pointVal;
-=======
           $today = date('Ymd');
           if($today<$dueDate && $complete == 0)
           {
@@ -29,6 +27,5 @@
                   $newPoints2 = $points2 + $pointVal;
                   $jamessenpai = "UPDATE users SET points = '" . $newPoints . " WHERE userid = '" . $personDid . "'";
         }
->>>>>>> 05e2c51ba59a3ad24625236e27732c6ebfaaced1
   }
 ?>
