@@ -7,7 +7,10 @@
   	if($today<$dueDate && $complete == 0)
   	{
   		$curPoints = "SELECT points FROM users WHERE userid = '" . $personAsgn . "'";
-  		$newPoints = $curPoints - $pointVal;
+  		$results = mysql_execute($curPoints);
+  		$row = mysql_fetch_assoc($results);
+  		$points = $row['points'];
+  		$newPoints = $points - $pointVal;
   		$doesthismatter = "UPDATE users SET points = '" . $newPoints . "'";
    	}
   	if($complete == 1 && (strcmp($personAsgn, $peronDid) != 0))
