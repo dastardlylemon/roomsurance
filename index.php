@@ -51,6 +51,7 @@
     FB.login(function (response) {
       if (response.authResponse) {
         console.log('fetching ur info');
+        console.log(response.authResponse);
         access_token = response.authReponse.accessToken;
         user_id = response.authResponse.userID;
         FB.api('/me', function (response) {
