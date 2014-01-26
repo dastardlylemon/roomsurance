@@ -14,7 +14,7 @@ function printChores($groupID){
   $array = getChores($groupID);
   for ($i = 0; $i < count($array); $i++) {
     echo '<div class="chore" id ="choreID' .$array[$i][choreid] . '">' .
-      '<div class="chore-date">' . date('M', strtotime($array[$i][due_date])) .'<br>' . <b>date('d', strtotime($array[$i][due_date]))</b> . '</div>' .
+      '<div class="chore-date">' . date('M', strtotime($array[$i][due_date])) .'<br><b>' . date('d', strtotime($array[$i][due_date])) . '</b></div>' .
       '<h4 class="chore-title">' . $array[$i][chore_name] . ' </h4>' .  
       '<h5 class="chore-desc">' . $array[$i][chore_descrip] .' </h5>' .
       '<div class="chore-diff">' . $array[$i][difficulty] . ' </div>' .   
