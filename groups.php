@@ -81,7 +81,18 @@ function joinGroup($userID, $groupPW)
 
 function removeGroup($groupName)
 {
-	//TODO
+	
+$didItWork = mysqli_query("DELETE FROM groups WHERE groupid= $groupName");
+if($didItWork)
+	echo "Group Deleted.  Come back next time!";
+else
+	echo "Something went wrong! Please try again in a couple of minutes";
+}
+
+function createChore($choreName, $pointValue, $groupID, $userID = "0", $chore_discription = "", $diffi = 0, $time = 0, $sugPoints = 0,
+						$due_Date = 0)
+{
+
 }
 
 echo "test8";
