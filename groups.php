@@ -33,7 +33,7 @@ function createGroup($userID, $groupName, $cashPerPerson, $listEmails)
 {
 	$newGroup = "INSERT INTO groups (group_name, cash_per) VALUES ('" . $groupName . "', " . $cashPerPerson . ")";
 	if (mysql_query($newGroup))
-		echo "Successfully created group" . $groupName;
+		echo "Successfully created group " . $groupName;
 	else
 		echo "Group could not be created because " . mysql_error($db);
 	$getGroupID = "SELECT groupid FROM groups WHERE group_name = '" . $groupName . "'";
@@ -97,6 +97,11 @@ else
 
 function createChore($choreName, $pointValue, $groupID, $userID = "0", $chore_discription = "", $diffi = 0, $time = 0, $sugPoints = 0,
 						$due_Date = 0)
+{
+
+}
+
+function getPassword($groupID)
 {
 
 }
