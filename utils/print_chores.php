@@ -7,17 +7,16 @@ function getChores($groupID)
 	$arr = array();
 	$findChores = "SELECT * FROM chores WHERE groupid = " . $groupID;
 	$result = mysql_query($findChores);
-	while ($row = mysql_fetch_assoc($result)) {
-		echo $row[0]['choreid'];
+	while ($row = mysql_fetch_assoc($result))
+		echo $row['choreid'];
 		$arr[] = $row;
-	}
 	return $arr;
 }
 echo "test3";
 function printChores($groupID){
 $array = getChores($groupID);
 echo "test4";
-var_dump $array;
+var_dump( $array);
 echo $array[0]['choreid'];
 for ($i = 0; $i < count($array); $i++)
 {
