@@ -36,9 +36,10 @@ function createGroup($userID, $groupName, $cashPerPerson, $listEmails)
 		echo "Successfully created group" . $groupName;
 	else
 		echo "Group could not be created because " . mysql_error($db);
-	$getGroupID = "SELECT groupid FROM groups WHERE group_name = '" . $groupName . "'";
-	$groupID = mysql_query($getGroupID);
-	settype($groupID, "int");
+	$getGroupID = "SELECT groupid FROM groups WHERE group_name = '" . $groupName . "' LIMIt 1";
+	$newGroupID = mysql_query($getGroupID);
+	$groupID = mysql_fetch_assoc($newGroupID);
+	$groupID = $groupID['groupid'];
 	$groupPW = generatePassword();
 
 	$setGroupPW = "UPDATE groups SET pass = '" . $groupPW . "' WHERE groupid = " . $groupID;
@@ -65,9 +66,10 @@ function createGroup($userID, $groupName, $cashPerPerson, $listEmails)
 echo "test7";
 function joinGroup($userID, $groupPW)
 {
-	$findGroup = "SELECT groupid FROM groups WHERE pass = '" . $groupPW . "'";
+	$findGroup = "SELECT groupid FROM groups WHERE pass = '" . $groupPW . "' LIMIT 1";
 	$getGroupID = mysql_query($findGroup);
-	settype($groupGroupID, "int");
+	$groupID = mysql_fetch_assoc($getGroupID);
+	$groupID = $groupID['groupid'];
 	if (!$getgroup) echo "Could not find group with pass";
 	$findUser = "UPDATE users SET usergroup = " . $getGroupID . " WHERE userid = '" . $userID . "'";
 	if (mysql_query($findUser))
@@ -76,10 +78,11 @@ function joinGroup($userID, $groupPW)
 		echo "Error joining the group: " . mysql_error($db);
 	$getCash = "SELECT cash_per FROM groups WHERE groupid = " . $getGroupID;
 	$getCashVal = mysql_query($getCash);
-	settype($getCashVal, "int");
-	$putCash = "UPDATE users SET cash = " . $getCashVal . " AND points = 1000 WHERE userid = '" . $userID . "'";
+	$cashVal = mysql_fetch_assoc($getCashVal);
+	$cashVal = $cashVal['cashval'];
+	$putCash = "UPDATE users SET cash = " . $cashVal . " AND points = 1000 WHERE userid = '" . $userID . "'";
 	if (mysql_query($putCash))
-		echo "You now have $" . $getCashVal;
+		echo "You now have $" . $cashVal;
 	else
 		echo "Could not add cash";
 	calculateTotalPoints($getGroupID);
@@ -95,11 +98,11 @@ else
 	echo "Something went wrong! Please try again in a couple of minutes";
 }
 
-function createChore($choreName, $pointValue, $groupID, $userID = "0", $chore_discription = "", $diffi = 0, $time = 0, $sugPoints = 0,
-						$due_Date = 0)
-{
+//function createChore($choreName, $pointValue, $groupID, $userID = "0", $chore_discription = "", $diffi = 0, $time = 0, $sugPoints = 0,
+//						$due_Date = 0)
+//{
 
-}
+//}
 
 echo "test8";
 //difficultyVal should be between 0 and 10; $timeVal should be time taken in minutes
