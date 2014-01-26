@@ -13,13 +13,13 @@ function getChores($groupID)
 function printChores($groupID){
   $array = getChores($groupID);
   for ($i = 0; $i < count($array); $i++) {
-    echo '<div class="chore" id ="choreID' .$array[$i][choreid] . '">' .
+    echo '<div class="chore-date">' . date('M DD', strtotime($array[$i][due_date])) .
+      '<div class="chore" id ="choreID' .$array[$i][choreid] . '">' .
       '<div class="chore-title">' . $array[$i][chore_name] . ' </div>' .  
       '<div class="chore-desc">' . $array[$i][chore_descrip] .' </div>' .
       '<div class="chore-diff">' . $array[$i][difficulty] . ' </div>' .   
       '<div class="chore-length">' . $array[$i][length] .' </div>' . 
-      '<div class="chore-points">' . $array[$i][act_points] .' </div>' . 
-      '<div class="chore-date">' . $array[$i][due_date].' </div></div>'; 
+      '<div class="chore-points">' . $array[$i][act_points] .' </div></div>'; 
   }
 }
 
