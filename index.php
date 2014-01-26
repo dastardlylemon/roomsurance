@@ -54,6 +54,7 @@
           if (response.authResponse) {
             access_token = response.authResponse.accessToken;
             user_id = response.authResponse.userID;
+            console.log(response.authResponse);
             $('#content-login').fadeOut(function() {
               $('#content-none').fadeIn();
             });  
