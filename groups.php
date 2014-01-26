@@ -36,6 +36,16 @@ function createUser($userID, $userName)
 		echo "User could not be created because " . mysql_error($db);
 }
 
+// Input user id to check if user already exists
+function checkUser($userID)
+{
+	$getUser = "SELECT * FROM users WHERE userid = '" . $userID;
+	if (!mysql_query($getUser))
+		return true;
+	else
+		return false;
+}
+
 // To create a group, input the userID, desired group name, starting money of each person, and the list of group members you want to email
 function createGroup($userID, $groupName, $cashPerPerson, $listEmails)
 {
@@ -109,8 +119,9 @@ function removeGroup($groupID)
 }
 
 function createChore($choreName, $pointValue, $groupID, $userID = "0", $chore_description = "", $diffi = 0, $timer = 0, $sugPoints = 0,
-						$due_Date = 0, $complete)
+						$due_Date, $complete)
 {
+	$due_Date = date("Y-m-d");
 	$newChore = "INSERT INTO chores (chore_name, chore_descrip, difficulty, length, sug_points, act_points, due_date, taskgroup, taskuser, completed) VALUES ('" . $choreName . "', '" . $chore_description . "', " . $diffi . ", " . $timer . ", " . $sugPoints . ", " . $due_Date . ", '" . $userID . "', " . $complete . ")";
 	if (mysql_query($newChore))
 		echo "Successfully created chore " . $choreName;
