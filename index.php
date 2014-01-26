@@ -82,6 +82,7 @@
         FB.api('/me', function (response) {
           name = response.name;
         });
+        console.log(user_id + ' ' + name);
         createUser(user_id, name);
         $('#content-login').fadeOut(function() {
           $('#content-none').fadeIn();
