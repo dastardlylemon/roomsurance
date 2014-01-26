@@ -23,8 +23,8 @@ function printChores($groupID){
   }
 }
 
-$uid = $_POST['guid'];
-$gid = $_POST['gid'];
+$uid = $_REQUEST['guid'];
+$gid = $_REQUEST['gid'];
 echo "hi";
 echo $gid;
 ?>
