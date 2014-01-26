@@ -88,13 +88,13 @@ function joinGroup($userID, $groupPW)
 	$getGroupID = mysql_query($findGroup);
 	$groupID = mysql_fetch_assoc($getGroupID);
 	$groupID = $groupID['groupid'];
-	if (!$getgroup) echo "Could not find group with pass";
-	$findUser = "UPDATE users SET usergroup = " . $getGroupID . " WHERE userid = '" . $userID . "'";
+	if (!$groupID) echo "Could not find group with pass";
+	$findUser = "UPDATE users SET usergroup = " . $groupID . " WHERE userid = '" . $userID . "'";
 	if (mysql_query($findUser))
 		echo "Successfully joined group";
 	else
 		echo "Error joining the group: " . mysql_error($db);
-	$getCash = "SELECT cash_per FROM groups WHERE groupid = " . $getGroupID;
+	$getCash = "SELECT cash_per FROM groups WHERE groupid = " . $groupID;
 	$getCashVal = mysql_query($getCash);
 	$cashVal = mysql_fetch_assoc($getCashVal);
 	$cashVal = $cashVal['cashval'];
