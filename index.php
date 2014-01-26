@@ -49,6 +49,7 @@
 
   function fbLogin() {
     FB.getLoginStatus(function (response) {
+      console.log(response.status);
       if (response.status !== 'connected') {
         FB.login(function (response) {
           if (response.authResponse) {
@@ -65,6 +66,7 @@
       } else {
         access_token = response.authResponse.accessToken;
         user_id = response.authResponse.userID;
+        console.log(response.authResponse);
         $('#content-login').fadeOut(function() {
           $('#content-none').fadeIn();
         });
