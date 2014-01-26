@@ -26,6 +26,16 @@ function sendEntryMail($emailString, $groupID)	//sends an entry email to everyon
 	} //should work, theoretically.
 }
 
+// Input user's ID and name from Facebook
+function createUser($userID, $userName)
+{
+	$newUser = "INSERT INTO users (userid, name) VALUES ('" . $userID . "', '" . $userName . "')";
+	if (mysql_query($newUser))
+		echo "Successfully created user " . $userName;
+	else
+		echo "User could not be created because " . mysql_error($db);
+}
+
 // To create a group, input the userID, desired group name, starting money of each person, and the list of group members you want to email
 function createGroup($userID, $groupName, $cashPerPerson, $listEmails)
 {
@@ -86,18 +96,16 @@ function joinGroup($userID, $groupPW)
 	calculateTotalPoints($getGroupID);
 }
 
-function removeGroup($groupName)
+function removeGroup($groupID)
 {
-	$didItWork = mysqli_query("DELETE FROM groups WHERE groupid= $groupName");
+	$removeChores = "DELETE FROM chores WHERE taskgroup = " . $groupID;
+	$delete = mysql_query($removeChores);
+	$updateGroup = "UPDATE users SET usergroup = '' WHERE usergroup = " . $groupID;
+	$didItWork = mysqli_query("DELETE FROM groups WHERE groupid = " . $groupID);
 	if($didItWork)
 		echo "Group Deleted.  Come back next time!";
 	else
 		echo "Something went wrong! Please try again in a couple of minutes";
-}
-
-function getGroup($groupID)
-{
-	
 }
 
 function createChore($choreName, $pointValue, $groupID, $userID = "0", $chore_description = "", $diffi = 0, $timer = 0, $sugPoints = 0,
@@ -142,7 +150,7 @@ function calculateEndValue($totalPoints, $userPoints, $totalGroupCash)
 
 function calculateTotalPoints($groupID)
 {
-	$sqlCall = "SELECT ALL * FROM users WHERE groupid = " . $groupID;
+	$sqlCall = "SELECT * FROM users WHERE groupid = " . $groupID;
 	$result = mysql_query($sqlCall);
 	$points = 0;
 	while ($row = mysql_fetch_array($result, MYSQL_ASSOC))
