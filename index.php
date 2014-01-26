@@ -47,6 +47,18 @@
     });
   };
 
+  function createUser(id, name) {
+    $.ajax({
+      url: './create_user.php',
+      data: {'userID': id, 'userName': name},
+      type: 'post',
+      success: function(output) {
+        if (output) console.log(output);
+        else console.log('you fucked up');
+      }
+    });
+  }
+
   function fbLogin() {
     FB.getLoginStatus(function (response) {
       if (response.status !== 'connected') {
@@ -54,6 +66,10 @@
           if (response.authResponse) {
             access_token = response.authResponse.accessToken;
             user_id = response.authResponse.userID;
+            FB.api('/me', function (response) {
+              name = response.name;
+            });
+            createUser(user_id, name);
             $('#content-login').fadeOut(function() {
               $('#content-none').fadeIn();
             });  
@@ -65,9 +81,9 @@
         access_token = response.authResponse.accessToken;
         user_id = response.authResponse.userID;
         FB.api('/me', function (response) {
-          console.log(response);
+          name = response.name;
         });
-        
+        createUser(user_id, name);
         $('#content-login').fadeOut(function() {
           $('#content-none').fadeIn();
         });
