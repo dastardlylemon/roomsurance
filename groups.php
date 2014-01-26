@@ -101,6 +101,21 @@ function createChore($choreName, $pointValue, $groupID, $userID = "0", $chore_di
 
 }
 
+function generateUniqueGroupID()
+{
+for($i = 0; $i < 100; $i++)
+{
+	$groupID = rand();
+	$findGroupID = "SELECT groupid FROM groups WHERE groupID = " . $groupID;
+		$result = mysql_query($findGroupID);
+			if(mysql_num_rows($result) == 0) {
+					return $groupID;
+				}
+}
+	echo "it's boned";
+	return -1;
+}
+
 function getPassword($groupID)
 {
 
