@@ -35,3 +35,4 @@ if (mysql_query($putCash))
 else
   echo "Could not add cash";
 calculateTotalPoints($getGroupID);
+?>
