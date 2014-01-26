@@ -8,7 +8,7 @@ $findGroup = "SELECT groupid FROM groups WHERE pass = '" . $groupPW . "' LIMIT 1
 $getGroupID = mysql_query($findGroup);
 $groupID = mysql_fetch_assoc($getGroupID);
 $groupID = $groupID['groupid'];
-if (!$getgroup) echo "Could not find group with pass";
+if (!$getGroupID) echo "Could not find group with pass";
 $findUser = "UPDATE users SET usergroup = " . $getGroupID . " WHERE userid = '" . $userID . "'";
 if (mysql_query($findUser))
   echo "Successfully joined group";
