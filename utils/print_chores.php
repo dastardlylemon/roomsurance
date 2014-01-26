@@ -18,5 +18,5 @@ for ($i = 0; $i < count($array); $i++)
 
 
 //TEST CODE. REMOVE BEFORE EVERYTHING GOES BAD.
-printChores(261)
+printChores(261);
 ?>
