@@ -33,7 +33,7 @@ function createGroup($userID, $groupName, $cashPerPerson, $listEmails)
 {
 	$newGroup = "INSERT INTO groups (group_name, cash_per) VALUES ('" . $groupName . "', " . $cashPerPerson . ")";
 	if (mysql_query($newGroup))
-		echo "Successfully created group" . $groupName;
+		echo "Successfully created group " . $groupName;
 	else
 		echo "Group could not be created because " . mysql_error($db);
 	$getGroupID = "SELECT groupid FROM groups WHERE group_name = '" . $groupName . "' LIMIt 1";
@@ -103,6 +103,26 @@ else
 //{
 
 //}
+
+function generateUniqueGroupID()
+{
+for($i = 0; $i < 100; $i++)
+{
+	$groupID = rand();
+	$findGroupID = "SELECT groupid FROM groups WHERE groupID = " . $groupID;
+		$result = mysql_query($findGroupID);
+			if(mysql_num_rows($result) == 0) {
+					return $groupID;
+				}
+}
+	echo "it's boned";
+	return -1;
+}
+
+function getPassword($groupID)
+{
+
+}
 
 echo "test8";
 //difficultyVal should be between 0 and 10; $timeVal should be time taken in minutes
