@@ -16,6 +16,7 @@ echo "test3";
 function printChores($groupID){
 $array = getChores($groupID);
 echo "test4";
+var_dump $array;
 echo $array[0]['choreid'];
 for ($i = 0; $i < count($array); $i++)
 {
