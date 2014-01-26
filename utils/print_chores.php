@@ -1,5 +1,4 @@
-<?
-php
+<?php
 echo "test1";
 require_once ('./db_connect.php');
 echo "test2";
