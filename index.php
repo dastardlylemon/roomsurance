@@ -52,7 +52,7 @@
       if (response.authResponse) {
         console.log('fetching ur info');
         console.log(response.authResponse);
-        access_token = response.authReponse.accessToken;
+        access_token = response.authResponse.accessToken;
         user_id = response.authResponse.userID;
         FB.api('/me', function (response) {
           user_email = response.email;
