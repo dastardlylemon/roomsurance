@@ -1,8 +1,6 @@
 <?php
-echo "test4";
 require_once ('./db_connect.php');
 
-echo "test5";
 function explodeString($rawGroupString, &$groups) {
 	$groups = explode(",", $rawGroupString);
 }
@@ -28,7 +26,6 @@ function sendEntryMail($emailString, $groupID)	//sends an entry email to everyon
 	} //should work, theoretically.
 }
 
-echo "test6";
 function createGroup($userID, $groupName, $cashPerPerson, $listEmails)
 {
 	$newGroup = "INSERT INTO groups (group_name, cash_per) VALUES ('" . $groupName . "', " . $cashPerPerson . ")";
@@ -63,7 +60,6 @@ function createGroup($userID, $groupName, $cashPerPerson, $listEmails)
 	sendEntryMail($listEmails, $groupID);
 }
 
-echo "test7";
 function joinGroup($userID, $groupPW)
 {
 	$findGroup = "SELECT groupid FROM groups WHERE pass = '" . $groupPW . "' LIMIT 1";
@@ -124,7 +120,6 @@ function getPassword($groupID)
 
 }
 
-echo "test8";
 //difficultyVal should be between 0 and 10; $timeVal should be time taken in minutes
 function suggestedPrice($difficultyVal, $timeVal, $initialPoints)
 {
@@ -159,7 +154,6 @@ function generatePassword()
 
 	for ($i = 0; $i < 170; $i++)
 	{
-		echo "tester".$i;
 		$password = $randWords[(rand()) % 170] . $randWords[(rand()) % 170];
 		$findGroup = "SELECT groupid FROM groups WHERE pass = '" . $password . "'";
 		$result = mysql_query($findGroup);
