@@ -79,6 +79,8 @@ body {
 #header {
   position: absolute;
   height: 100px;
+  width: 960px;
+  @include center-block;
 }
 
 #content-none,
@@ -143,4 +145,10 @@ body {
 #host-submit,
 #join-submit {
   @include center-block;
+}
+
+#chore {
+  background-color: #fff;
+  color: $primary-color-dark;
+  @include border-radius(5px);
 }
