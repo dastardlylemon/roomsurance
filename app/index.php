@@ -22,6 +22,11 @@ function printChores($groupID){
       '<div class="chore-date">' . $array[$i][due_date].' </div></div>'; 
   }
 }
+
+$uid = $_POST['guid'];
+$gid = $_POST['gid'];
+echo "hi";
+echo $gid;
 ?>
 
 <!doctype html>
@@ -40,8 +45,6 @@ function printChores($groupID){
   <div id="content">
     <div id="chore-list">
       <?php 
-        $uid = $_POST['guid'];
-        $gid = $_POST['gid'];
         echo $gid;
         printChores($gid); 
       ?>
