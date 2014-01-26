@@ -8,6 +8,7 @@ function getChores($groupID)
 	$findChores = "SELECT * FROM chores WHERE groupid = " . $groupID;
 	$result = mysql_query($findChores);
 	while ($row = mysql_fetch_assoc($result))
+		echo $row['choreid'];
 		$arr[] = $row;
 	return $arr;
 }
