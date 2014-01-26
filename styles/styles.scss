@@ -158,7 +158,11 @@ body {
   .chore-date {
     font-family: $font-stack;
     font-weight: 700; 
-    font-size: 50px;
+    font-size: 30px;
+
+    b {
+      font-size: 50px;
+    }
   }
 
   h4, h5 {
